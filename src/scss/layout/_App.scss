@@ -5,5 +5,8 @@
     height: auto;
     min-height: 100vh;
     overflow: scroll;
-    background-color: red;
+    background-color: $color-white;
+
+    font-family: "Kumbh Sans", sans-serif;
+    font-size: $font-size-paragraph;
 }
