@@ -4,13 +4,11 @@
     flex-direction: column;
 
     &__picture {
-        border-radius: 2rem;
-        width: auto;
-        height: auto;
-        background-color: red;
+        border-radius: 1.5rem;
     }
 
     &-thumbnails {
+        width: 100%;
         display: flex;
     }
 }
