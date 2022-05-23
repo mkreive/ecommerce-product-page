@@ -1,14 +1,31 @@
 .gallery {
-    flex-basis: 65%;
-    display: flex;
-    flex-direction: column;
+    width: 26vw;
 
     &__picture {
-        border-radius: 1.5rem;
+        &-big {
+            border-radius: 1.8rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+        &-small {
+            border-radius: 1.2rem;
+            width: 20%;
+
+            &:hover {
+                cursor: pointer;
+                filter: opacity(0.75);
+            }
+        }
     }
 
     &-thumbnails {
-        width: 100%;
         display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
+}
+
+.selected {
+    border: 2px solid $color-primary-orange;
+    z-index: 99;
 }
