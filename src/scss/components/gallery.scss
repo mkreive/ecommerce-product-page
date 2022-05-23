@@ -3,9 +3,11 @@
     display: flex;
     flex-direction: column;
 
-    &_picture {
+    &__picture {
         border-radius: 2rem;
-        width: 20rem;
+        width: auto;
+        height: auto;
+        background-color: red;
     }
 
     &-thumbnails {

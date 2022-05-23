@@ -5,7 +5,7 @@ function Account() {
         <img
             className="account"
             src="https://res.cloudinary.com/kreiva/image/upload/v1653033615/FrontendMentor/EcommerceProductPage/image-avatar_pvqg6m.png"
-            alt="photo"
+            alt="user"
         ></img>
     );
 }
