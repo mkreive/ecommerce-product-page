@@ -1,6 +1,6 @@
 .navigation {
     width: 100%;
-    flex-basis: 60%;
+    flex-basis: 80%;
 
     &__links {
         list-style: none;
@@ -13,12 +13,17 @@
 
         &-link:link,
         &-link:visited {
-            padding-right: 3rem;
-            display: block;
+            margin-right: 3rem;
             transition: all 0.2s;
             text-decoration: none;
-            color: $color-neutral-dark-grayish-blue;
+            color: $color-neutral-grayish-blue;
             font-size: $font-size-navigation;
+        }
+        &-link:hover,
+        &-link:focus {
+            color: $color-neutral-dark-grayish-blue;
+            border-bottom: 4px solid $color-primary-orange;
+            padding-bottom: 4.7rem;
         }
     }
 }
