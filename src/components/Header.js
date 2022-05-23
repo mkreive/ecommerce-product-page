@@ -1,11 +1,13 @@
 import "../index.scss";
+import Logo from "./Logo";
+import Navigation from "./Navigation";
 
 function Header() {
     return (
         <div className="header">
             <div className="header-right">
-                <div className="logo"></div>
-                <div className="nav"></div>
+                <Logo></Logo>
+                <Navigation></Navigation>
             </div>
             <div className="header-left">
                 <div className="cart"></div>
