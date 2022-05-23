@@ -1,9 +1,10 @@
 import "../index.scss";
+import Company from "./product/Company";
 
 function Product() {
     return (
         <div className="product">
-            <h3 className="header-small">Sneaker company</h3>
+            <Company></Company>
             <h1 className="header-big">Fall limited edition sneakers</h1>
             <p className="text">
                 These low profile sneakersare your perfect casual wear
