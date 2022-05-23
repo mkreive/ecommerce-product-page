@@ -1,0 +1,15 @@
+.header {
+    top: 0;
+    width: 80vw;
+    height: 20vh;
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+
+    &-right {
+        flex-basis: 70%;
+    }
+    &-left {
+        flex-basis: 30%;
+    }
+}
