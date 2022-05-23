@@ -1,0 +1,14 @@
+.gallery {
+    flex-basis: 65%;
+    display: flex;
+    flex-direction: column;
+
+    &_picture {
+        border-radius: 2rem;
+        width: 20rem;
+    }
+
+    &-thumbnails {
+        display: flex;
+    }
+}

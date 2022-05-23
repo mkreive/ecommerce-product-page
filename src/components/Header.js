@@ -6,12 +6,12 @@ import Account from "./Account";
 
 function Header() {
     return (
-        <div className="header">
+        <header className="header">
             <Logo></Logo>
             <Navigation></Navigation>
             <Cart></Cart>
             <Account></Account>
-        </div>
+        </header>
     );
 }
 export default Header;
