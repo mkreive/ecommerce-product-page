@@ -4,11 +4,13 @@
         letter-spacing: $font-letter-spacing;
         text-transform: uppercase;
         color: $color-primary-orange;
-        margin-bottom: $margin-bottom-small;
+        margin-bottom: $margin-bottom-medium;
     }
 
     &-medium {
-        font-size: 4rem;
+        font-size: $font-size-header-medium;
+        font-weight: $font-weight-heavy;
+        letter-spacing: $font-letter-spacing;
     }
 
     &-big {

@@ -1,0 +1,22 @@
+.prices {
+    margin-bottom: $margin-bottom-medium;
+}
+.price {
+    margin-bottom: $margin-bottom-small;
+
+    &-now {
+        margin-right: 1.5rem;
+    }
+    &-discount {
+        background-color: $color-primary-pale-orange;
+        color: $color-primary-orange;
+        border-radius: 0.6rem;
+        padding: 0.3rem 0.8rem;
+        font-weight: $font-weight-heavy;
+    }
+
+    &-before {
+        color: $color-neutral-grayish-blue;
+        text-decoration: line-through;
+    }
+}
