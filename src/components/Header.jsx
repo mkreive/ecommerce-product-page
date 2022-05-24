@@ -11,27 +11,30 @@ function Header() {
             <nav className="navigation">
                 <ul className="navigation__links">
                     <li>
-                        <a className="navigation__links-link" href="#section-1">
+                        <a
+                            className="navigation__links-link"
+                            href="#collections"
+                        >
                             Collections
                         </a>
                     </li>
                     <li>
-                        <a className="navigation__links-link" href="#section-2">
+                        <a className="navigation__links-link" href="#Men">
                             Men
                         </a>
                     </li>
                     <li>
-                        <a className="navigation__links-link" href="#section-2">
+                        <a className="navigation__links-link" href="#Women">
                             Women
                         </a>
                     </li>
                     <li>
-                        <a className="navigation__links-link" href="#section-2">
+                        <a className="navigation__links-link" href="#About">
                             About
                         </a>
                     </li>
                     <li>
-                        <a className="navigation__links-link" href="#section-2">
+                        <a className="navigation__links-link" href="#Contact">
                             Contact
                         </a>
                     </li>
