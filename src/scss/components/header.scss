@@ -1,6 +1,10 @@
 .header {
     &-small {
-        font-size: 2rem;
+        font-size: $font-size-header-small;
+        letter-spacing: $font-letter-spacing;
+        text-transform: uppercase;
+        color: $color-primary-orange;
+        margin-bottom: $margin-bottom-small;
     }
 
     &-medium {
@@ -8,6 +12,10 @@
     }
 
     &-big {
-        font-size: 6rem;
+        font-size: 4.5rem;
+        text-transform: capitalize;
+        letter-spacing: $font-letter-spacing;
+        line-height: $font-line-height-big;
+        margin-bottom: $margin-bottom-big;
     }
 }

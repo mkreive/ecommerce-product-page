@@ -1,6 +1,12 @@
-$font-size-paragraph: 1rem; // 16px
+$font-size-paragraph: 1.7rem;
 $font-size-navigation: 1.6rem;
+$font-size-header-small: 1.5rem;
+
 $font-line-height: 0.8rem;
+$font-line-height-big: 4.5rem;
+$font-line-height-medium: 3rem;
+
+$font-letter-spacing: 0.15rem;
 
 $font-weight-light: 400;
 $font-weight-heavy: 700;
@@ -15,3 +21,7 @@ $color-neutral-light-grayish-blue: hsl(231, 19%, 93%);
 
 $color-white: hsl(0, 0%, 100%);
 $color-black: hsl(0, 0%, 0%);
+
+$margin-bottom-small: 1rem;
+$margin-bottom-medium: 2rem;
+$margin-bottom-big: 4rem;
