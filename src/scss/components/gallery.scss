@@ -5,6 +5,45 @@
         width: 100%;
     }
 
+    &__collection {
+        margin: -2rem 2rem 0 2rem;
+
+        &:hover {
+            cursor: pointer;
+            color: $color-primary-orange;
+            filter: opacity(0.9);
+        }
+
+        &-btn {
+            position: relative;
+            text-align: center;
+            top: 19%;
+        }
+    }
+
+    &__shop {
+        display: flex;
+        justify-content: center;
+        gap: 2%;
+        width: 100%;
+        flex-wrap: wrap;
+
+        &-product {
+            width: 29%;
+            padding: 1rem;
+
+            border: 3px solid white;
+            border-radius: 2rem;
+            margin-bottom: $margin-bottom-medium;
+
+            &:hover {
+                cursor: pointer;
+                border: 3px solid $color-primary-orange;
+                border-radius: 2rem;
+            }
+        }
+    }
+
     &__picture {
         &-big {
             border-radius: 1.8rem;
@@ -26,7 +65,7 @@
         }
     }
 
-    &-thumbnails {
+    &__thumbnails {
         display: flex;
         flex-direction: row;
         justify-content: space-between;

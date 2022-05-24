@@ -2,7 +2,7 @@ import "../index.scss";
 
 function Product() {
     return (
-        <main>
+        <main className="main">
             <div className="gallery">
                 <div className="gallery__arrows">
                     <button className="gallery__arrows-left"></button>
