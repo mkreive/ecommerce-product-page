@@ -19,9 +19,9 @@ function Product() {
             </div>
             <div className="addtocart">
                 <div className="addtocart__quantity">
-                    <span>-</span>
-                    <span>0</span>
-                    <span>+</span>
+                    <span className="addtocart__quantity-minus"></span>
+                    <span className="addtocart__quantity-count">0</span>
+                    <span className="addtocart__quantity-add"></span>
                 </div>
                 <button className="btn addtocart__btn">Add to cart</button>
             </div>

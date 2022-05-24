@@ -1,3 +1,53 @@
 .addtocart {
     display: flex;
+
+    &__quantity {
+        display: flex;
+        justify-content: space-between;
+        background-color: $color-neutral-light-grayish-blue;
+        padding: 1.7rem;
+        border-radius: 0.8rem;
+        width: auto;
+        font-weight: $font-weight-heavy;
+        margin-right: 1.5rem;
+
+        &-add {
+            background-image: url("https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/icon-plus_d5jrus.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 2rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        &-minus {
+            background-image: url("https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-minus_hgbriw.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 2rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        &-count {
+            width: 8rem;
+            text-align: center;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__btn {
+        background-image: url("https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-cart_tpxhw0.svg");
+        background-color: white;
+        background-blend-mode: screen;
+        background-repeat: no-repeat;
+        background-color: white;
+        background-position: 25% 50%;
+        padding: 1.5rem 6rem 1.5rem 9rem !important;
+    }
 }
