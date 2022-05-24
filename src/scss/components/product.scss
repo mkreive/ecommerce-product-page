@@ -1,5 +1,9 @@
 .product {
     width: 50%;
-    margin-left: 10rem;
-    margin-top: 4rem;
+    margin-left: 8rem;
+    margin-top: 2rem;
+
+    @include respond(tab-port) {
+        margin-left: 6rem;
+    }
 }

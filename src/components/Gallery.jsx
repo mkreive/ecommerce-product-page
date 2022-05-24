@@ -3,6 +3,10 @@ import "../index.scss";
 function Gallery() {
     return (
         <div className="gallery">
+            <div className="gallery__arrows">
+                <button className="gallery__arrows-left"></button>
+                <button className="gallery__arrows-right"></button>
+            </div>
             <img
                 className="gallery__picture-big"
                 src="https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/image-product-1_ra55jy.jpg"

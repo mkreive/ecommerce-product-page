@@ -3,6 +3,10 @@
     flex-basis: auto;
     border: 2px solid $color-white;
 
+    @include respond(phone) {
+        margin-right: 2.5rem;
+    }
+
     &:hover {
         border: 2px solid $color-primary-orange;
         border-radius: 50%;

@@ -3,6 +3,10 @@
     flex-basis: 5%;
     padding-right: 4rem;
 
+    @include respond(phone) {
+        padding-right: 2.5rem;
+    }
+
     &:hover {
         cursor: pointer;
     }

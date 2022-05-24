@@ -1,12 +1,15 @@
 .btn {
+    width: max-content;
     background-color: $color-primary-orange;
     border: none;
-    padding: 1.5rem 3rem;
+    padding: 1.5rem 2rem;
     border-radius: 0.8rem;
     color: $color-primary-pale-orange;
     font-weight: $font-weight-heavy;
 
     &:hover {
         cursor: pointer;
+        background-color: lighten($color: $color-primary-orange, $amount: 10);
+        box-shadow: 1px 5px 6px $color-primary-pale-orange;
     }
 }

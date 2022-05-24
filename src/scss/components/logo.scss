@@ -3,4 +3,18 @@
     height: auto;
     flex-basis: 15%;
     padding-right: 6rem;
+
+    @include respond(tab-port) {
+        padding-right: 3rem;
+    }
+    @include respond(phone) {
+        background-image: url("https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-menu_tqbztp.svg");
+        background-repeat: no-repeat;
+        background-position: 10% 90%;
+        padding-left: 8rem;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

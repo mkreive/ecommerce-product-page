@@ -18,12 +18,17 @@
             text-decoration: none;
             color: $color-neutral-grayish-blue;
             font-size: $font-size-navigation;
+
+            @include respond(tab-port) {
+                margin-right: 1.5rem;
+                font-size: 80%;
+            }
         }
         &-link:hover,
         &-link:focus {
             color: $color-neutral-dark-grayish-blue;
             border-bottom: 4px solid $color-primary-orange;
-            padding-bottom: 4.7rem;
+            padding-bottom: 6.2vh;
         }
     }
 }

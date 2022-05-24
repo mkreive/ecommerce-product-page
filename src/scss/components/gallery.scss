@@ -1,11 +1,19 @@
 .gallery {
-    width: 26vw;
+    width: 50%;
+
+    @include respond(phone) {
+        width: 100%;
+    }
 
     &__picture {
         &-big {
             border-radius: 1.8rem;
             margin-bottom: 3rem;
             width: 100%;
+
+            @include respond(phone) {
+                border-radius: 0;
+            }
         }
         &-small {
             border-radius: 1.2rem;
@@ -22,6 +30,49 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
+        @include respond(phone) {
+            display: none;
+            visibility: hidden;
+        }
+    }
+
+    &__arrows {
+        visibility: hidden;
+        display: none;
+
+        @include respond(phone) {
+            padding: 5%;
+            display: flex;
+            justify-content: space-between;
+            visibility: visible;
+            position: absolute;
+            top: 40%;
+            height: 8%;
+            width: 100%;
+
+            &-left,
+            &-right {
+                width: 7rem;
+                height: 7rem;
+                border: none;
+                border-radius: 50%;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            &-left {
+                background-image: url("https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/icon-previous_kp1ceu.svg");
+                background-repeat: no-repeat;
+                background-position: 42% 50%;
+            }
+            &-right {
+                background-image: url("https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-next_wozwyc.svg");
+                background-repeat: no-repeat;
+                background-position: 52% 50%;
+            }
+        }
     }
 }
 

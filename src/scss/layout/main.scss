@@ -2,6 +2,21 @@
     width: 70vw;
     height: auto;
     display: flex;
-    padding: 8rem 5rem;
+    padding: 7rem 4rem;
     justify-content: space-between;
+
+    @include respond(tab-land) {
+        width: 75vw;
+        padding: 5rem 3rem;
+    }
+    @include respond(tab-port) {
+        width: 90vw;
+    }
+
+    @include respond(phone) {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
 }
