@@ -14,7 +14,7 @@ const removeLocalStorage = function (key, value) {
     if (data === value) window.localStorage.removeItem(key);
 };
 
-setLocalStorage("userId", "u1");
+// setLocalStorage("userId", "u1");
 
 const Account = function () {
     const [user, setUser] = useState([]);
