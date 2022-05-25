@@ -1,6 +1,7 @@
 import "../index.scss";
 import Account from "./Account";
 import AccountPopUp from "./AccountPopUp";
+import Cart from "./Cart";
 
 const Header = (props) => {
     return (
@@ -48,7 +49,8 @@ const Header = (props) => {
                 alt="cart"
             ></img>
             <Account></Account>
-            <AccountPopUp></AccountPopUp>
+            {/* <AccountPopUp></AccountPopUp> */}
+            <Cart></Cart>
         </header>
     );
 };
