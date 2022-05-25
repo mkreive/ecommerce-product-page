@@ -1,6 +1,6 @@
 import "../index.scss";
 
-function Header() {
+function Header(props) {
     return (
         <header className="header">
             <img
