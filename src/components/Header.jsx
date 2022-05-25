@@ -1,4 +1,5 @@
 import "../index.scss";
+import Account from "./Account";
 
 const Header = (props) => {
     return (
@@ -45,11 +46,7 @@ const Header = (props) => {
                 src="https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-cart_tpxhw0.svg"
                 alt="cart"
             ></img>
-            <img
-                className="account"
-                src="https://res.cloudinary.com/kreiva/image/upload/v1653033615/FrontendMentor/EcommerceProductPage/image-avatar_pvqg6m.png"
-                alt="user"
-            ></img>
+            <Account></Account>
         </header>
     );
 };
