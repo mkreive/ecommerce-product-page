@@ -1,6 +1,6 @@
 import "../index.scss";
 
-function Header(props) {
+const Header = (props) => {
     return (
         <header className="header">
             <img
@@ -52,5 +52,5 @@ function Header(props) {
             ></img>
         </header>
     );
-}
+};
 export default Header;

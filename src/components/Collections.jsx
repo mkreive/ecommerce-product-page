@@ -1,6 +1,6 @@
 function Collections() {
     return (
-        <main className="main">
+        <div className="main">
             <div className="gallery gallery__collection">
                 <h1 className="header-big gallery__collection-btn">Men</h1>
                 <img
@@ -17,7 +17,7 @@ function Collections() {
                     alt="shoe"
                 />
             </div>
-        </main>
+        </div>
     );
 }
 
