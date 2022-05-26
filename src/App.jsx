@@ -11,7 +11,7 @@ const App = function () {
     const [main, setMain] = useState(<Collections></Collections>);
 
     const navigationClickHandler = function (clickedBtn) {
-        const mainPageContent = clickedBtn;
+        setMain(<Product></Product>);
     };
     return (
         <div className="App">

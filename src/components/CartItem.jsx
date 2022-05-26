@@ -7,7 +7,11 @@ const CartItem = function (props) {
     for (const item in cart) {
         return (
             <Fragment>
-                <hr className="card__line" />
+                <img
+                    src={cart[item].photo}
+                    alt="sneaker"
+                    className="gallery__picture-small"
+                />
                 <div className="card__content-text">
                     <div className="text-small-margin">
                         {cart[item].product}
@@ -21,6 +25,11 @@ const CartItem = function (props) {
                         </span>
                     </div>
                 </div>
+                <img
+                    className="delete"
+                    src="https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-delete_o70eii.svg"
+                    alt="trash"
+                />
             </Fragment>
         );
     }
