@@ -1,6 +1,8 @@
 import "../index.scss";
 
-const Cart = function () {
+const Cart = function (props) {
+    const userCart = props.cart;
+
     return (
         <div className="card">
             <h3 className="header-small-black">Cart</h3>
@@ -21,6 +23,7 @@ const Cart = function () {
                     </div>
                 </div>
                 <img
+                    className="delete"
                     src="https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-delete_o70eii.svg"
                     alt="trash"
                 />

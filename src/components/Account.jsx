@@ -14,8 +14,6 @@ const removeLocalStorage = function (key, value) {
     if (data === value) window.localStorage.removeItem(key);
 };
 
-// setLocalStorage("userId", "u1");
-
 const Account = function (props) {
     const [user, setUser] = useState([]);
 
@@ -44,12 +42,16 @@ const Account = function (props) {
         fetchUserData();
     }, []);
 
+    const userDataHandler = function () {
+        props.onClick(user);
+    };
     const accountClickHandler = function () {
         props.onAccountClick(user);
     };
 
     return (
         <img
+            onLoad={userDataHandler}
             onClick={accountClickHandler}
             className="account"
             src={user.photo}
