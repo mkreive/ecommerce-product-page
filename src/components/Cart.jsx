@@ -7,13 +7,14 @@ const Cart = function (props) {
     return (
         <div className="card">
             <h3 className="header-small-black">Cart</h3>
-            <hr className="card__line" />
+
             <div className="card__content">
                 <img
                     src="https://res.cloudinary.com/kreiva/image/upload/v1653392390/FrontendMentor/EcommerceProductPage/image-product-7-thumbnail_yylxgp.jpg"
                     alt="sneaker"
                     className="gallery__picture-small"
                 />
+
                 <CartItem cart={userCart}></CartItem>
                 <img
                     className="delete"

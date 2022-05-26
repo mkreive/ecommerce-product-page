@@ -1,23 +1,29 @@
+import { Fragment } from "react";
 import "../index.scss";
 
 const CartItem = function (props) {
-    console.log(props.cart);
-    props.cart.map((product) => {
-        console.log(product[0]);
-        // return (
-        //     <div className="card__content-text">
-        //         <div className="text-small-margin">{product.product}</div>
-        //         <div className="price__group">
-        //             <span className="text">
-        //                 ${product.price} x {product.quantity}
-        //             </span>
-        //             <span className="text-bold">
-        //                 ${product.price * product.quantity}
-        //             </span>
-        //         </div>
-        //     </div>
-        // );
-    });
+    const cart = props.cart;
+
+    for (const item in cart) {
+        return (
+            <Fragment>
+                <hr className="card__line" />
+                <div className="card__content-text">
+                    <div className="text-small-margin">
+                        {cart[item].product}
+                    </div>
+                    <div className="price__group">
+                        <span className="text">
+                            ${cart[item].price} x {cart[item].quantity}
+                        </span>
+                        <span className="text-bold">
+                            ${cart[item].price * cart[item].quantity}
+                        </span>
+                    </div>
+                </div>
+            </Fragment>
+        );
+    }
 };
 
 export default CartItem;

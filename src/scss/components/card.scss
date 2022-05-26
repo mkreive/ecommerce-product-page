@@ -11,6 +11,7 @@
     box-shadow: -2px 14px 15px -5px rgba(0, 0, 0, 0.45);
 
     &__line {
+        // width: 100%;
         margin-top: 2.5rem;
         margin-bottom: 1rem;
         border: 1px solid $color-neutral-light-grayish-blue;
@@ -18,7 +19,7 @@
 
     &__content {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         margin-bottom: $margin-bottom-big;
         margin-top: $margin-bottom-big;
 
