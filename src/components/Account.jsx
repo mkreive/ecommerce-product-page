@@ -16,7 +16,7 @@ const removeLocalStorage = function (key, value) {
 
 // setLocalStorage("userId", "u1");
 
-const Account = function () {
+const Account = function (props) {
     const [user, setUser] = useState([]);
 
     useEffect(() => {
@@ -44,6 +44,17 @@ const Account = function () {
         fetchUserData();
     }, []);
 
-    return <img className="account" src={user.photo} alt="user photo"></img>;
+    const accountClickHandler = function () {
+        props.onAccountClick(user);
+    };
+
+    return (
+        <img
+            onClick={accountClickHandler}
+            className="account"
+            src={user.photo}
+            alt="user photo"
+        ></img>
+    );
 };
 export default Account;
