@@ -1,8 +1,18 @@
 import "../index.scss";
 
+const removeLocalStorage = function (key, value) {
+    if (!key || !value) return;
+    window.localStorage.removeItem(key);
+};
+
 const AccountPopUp = function (props) {
     const userName = props.name.toUpperCase();
     const productCount = Object.keys(props.cart).length;
+    const userId = props.id;
+
+    const logoutHandler = function () {
+        removeLocalStorage("userId", userId);
+    };
 
     return (
         <div className="card">
@@ -12,8 +22,9 @@ const AccountPopUp = function (props) {
                 You have {productCount} items in your cart!
             </div>
             <div className="btn-group">
-                <button className="btn btn-popup">Go to cart</button>
-                <button className="btn btn-popup">Log Out</button>
+                <button className="btn btn-popup" onClick={logoutHandler}>
+                    Log Out
+                </button>
             </div>
         </div>
     );

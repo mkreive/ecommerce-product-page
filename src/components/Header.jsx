@@ -14,11 +14,7 @@ const getLocalStorage = function (key) {
 const setLocalStorage = function (key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 };
-const removeLocalStorage = function (key, value) {
-    if (!key || !value) return;
-    const data = getLocalStorage(key);
-    if (data === value) window.localStorage.removeItem(key);
-};
+setLocalStorage("userId", "u1");
 
 const Header = (props) => {
     const [user, setUser] = useState([]);
@@ -55,7 +51,9 @@ const Header = (props) => {
 
     const [popup, setPopup] = useState("");
     const accountIconClickHandler = function () {
-        setPopup(<AccountPopUp name={user.name} cart={user.cart} />);
+        setPopup(
+            <AccountPopUp name={user.name} cart={user.cart} id={user.id} />
+        );
     };
 
     const cartPopupHandler = function () {
