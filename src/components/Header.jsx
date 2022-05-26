@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "../index.scss";
 import Account from "./Account";
@@ -6,26 +6,60 @@ import AccountPopUp from "./AccountPopUp";
 import Cart from "./Cart";
 import Collections from "./Collections";
 
+// local storage
+const getLocalStorage = function (key) {
+    const data = JSON.parse(localStorage.getItem(key));
+    return data;
+};
+const setLocalStorage = function (key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+};
+const removeLocalStorage = function (key, value) {
+    if (!key || !value) return;
+    const data = getLocalStorage(key);
+    if (data === value) window.localStorage.removeItem(key);
+};
+
 const Header = (props) => {
-    const [user, setUser] = useState("");
-    const [popup, setPopup] = useState("");
+    const [user, setUser] = useState([]);
+    useEffect(() => {
+        const fetchUserData = async function () {
+            let loggedUserId = getLocalStorage("userId");
+            if (!loggedUserId) {
+                loggedUserId = "u0";
+            }
+            const response = await fetch(
+                `https://to-do-list-app-10ca0-default-rtdb.europe-west1.firebasedatabase.app/users.json?orderBy=%22id%22&equalTo=%22${loggedUserId}%22`
+            );
+            const responseData = await response.json();
+            let userData;
+
+            for (const key in responseData) {
+                userData = {
+                    id: key,
+                    name: responseData[key].name,
+                    photo: responseData[key].photo,
+                    cart: responseData[key].cart,
+                };
+            }
+            setUser(userData);
+            return user;
+        };
+        fetchUserData();
+    }, []);
 
     const navigationClickHandler = function (e) {
         const clickedLink = e.target.innerHTML;
         props.onNavigationClick(clickedLink);
     };
-    const accountHandler = function (account) {
-        console.log(account);
-    };
-    const accountPopupHandler = function (account) {
-        setPopup(<AccountPopUp name={account.name} cart={account.cart} />);
-        setUser(account);
-        return user;
+
+    const [popup, setPopup] = useState("");
+    const accountIconClickHandler = function () {
+        setPopup(<AccountPopUp name={user.name} cart={user.cart} />);
     };
 
-    const cartPopupHandler = function (account) {
-        console.log(account);
-        setPopup(<Cart user={account} />);
+    const cartPopupHandler = function () {
+        setPopup(<Cart cart={user.cart} />);
     };
 
     return (
@@ -91,8 +125,8 @@ const Header = (props) => {
                 alt="cart"
             ></img>
             <Account
-                onAccountClick={accountPopupHandler}
-                onLoad={accountHandler}
+                user={user}
+                onAccountClick={accountIconClickHandler}
             ></Account>
             {popup}
         </header>

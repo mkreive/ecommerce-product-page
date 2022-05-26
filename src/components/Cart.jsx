@@ -1,4 +1,5 @@
 import "../index.scss";
+import CartItem from "./CartItem";
 
 const Cart = function (props) {
     const userCart = props.cart;
@@ -13,15 +14,7 @@ const Cart = function (props) {
                     alt="sneaker"
                     className="gallery__picture-small"
                 />
-                <div className="card__content-text">
-                    <div className="text-small-margin">
-                        Fall Limited Edition Sneakers
-                    </div>
-                    <div className="price__group">
-                        <span className="text">$125.00 x 3 </span>
-                        <span className="text-bold">$375.00</span>
-                    </div>
-                </div>
+                <CartItem cart={userCart}></CartItem>
                 <img
                     className="delete"
                     src="https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-delete_o70eii.svg"
