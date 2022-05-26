@@ -13,7 +13,7 @@ function Product() {
                     src="https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/image-product-1_ra55jy.jpg"
                     alt="product"
                 ></img>
-                <div className="gallery-thumbnails">
+                <div className="gallery__thumbnails">
                     <img
                         className="gallery__picture-small selected"
                         src="https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/image-product-1-thumbnail_qfqqjm.jpg"

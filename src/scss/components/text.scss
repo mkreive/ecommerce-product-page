@@ -3,4 +3,13 @@
     line-height: $font-line-height-medium;
     color: $color-neutral-dark-grayish-blue;
     margin-bottom: $margin-bottom-medium;
+
+    &-small-margin {
+        margin-bottom: $margin-bottom-small;
+    }
+
+    &-bold {
+        color: $color-black;
+        font-weight: $font-weight-heavy;
+    }
 }

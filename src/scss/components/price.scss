@@ -25,4 +25,8 @@
         color: $color-neutral-grayish-blue;
         text-decoration: line-through;
     }
+    &__group:first-child {
+        margin-right: 1rem;
+        background-color: red;
+    }
 }

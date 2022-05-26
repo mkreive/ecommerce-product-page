@@ -11,17 +11,19 @@ const Cart = function () {
                     alt="sneaker"
                     className="gallery__picture-small"
                 />
-                <div>
-                    <div className="text">Fall Limited Edition Sneakers</div>
-                    <div className="price-group">
-                        <span>$125.00 x 3</span>
-                        <span>$375.00</span>
+                <div className="card__content-text">
+                    <div className="text-small-margin">
+                        Fall Limited Edition Sneakers
                     </div>
-                    <img
-                        src="https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-delete_o70eii.svg"
-                        alt="trash"
-                    />
+                    <div className="price__group">
+                        <span className="text">$125.00 x 3 </span>
+                        <span className="text-bold">$375.00</span>
+                    </div>
                 </div>
+                <img
+                    src="https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-delete_o70eii.svg"
+                    alt="trash"
+                />
             </div>
             <button className="btn btn-popup">Checkout</button>
         </div>
