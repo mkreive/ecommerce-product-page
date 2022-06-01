@@ -10,20 +10,15 @@ function Men() {
             const fetchedData = await fetchProducts();
             const allProducts = Object.values(fetchedData);
             const menProducts = menFilter(allProducts);
-
-            console.log(menProducts);
-            // setProducts(fetchedData);
+            setProducts(menProducts);
         };
         getProducts();
     }, []);
 
-    // filter just one kind sneakers
-    // render product list according to products
-
     return (
         <main className="main">
             <div className="gallery__shop">
-                {Object.values(products).map((product) => (
+                {products.map((product) => (
                     <ProductItem key={product.id} product={product} />
                 ))}
             </div>

@@ -43,8 +43,11 @@ export const fetchProducts = async function () {
 
 // PRODUCTS FILTERS
 export const menFilter = function (productArr) {
-    const menProducts = productArr.filter((product) => {
-        product.category.includes("men");
+    const menProducts = [];
+    productArr.filter((product) => {
+        if (product.category.includes("men")) {
+            menProducts.push(product);
+        }
     });
-    console.log(menProducts);
+    return menProducts;
 };
