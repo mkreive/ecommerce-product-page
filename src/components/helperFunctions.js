@@ -32,4 +32,19 @@ export const fetchUserData = async function (userId) {
     return userData;
 };
 
-//
+// FETCHIN PRODUCTS
+export const fetchProducts = async function () {
+    const response = await fetch(
+        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products.json`
+    );
+    const responseData = await response.json();
+    return responseData;
+};
+
+// PRODUCTS FILTERS
+export const menFilter = function (productArr) {
+    const menProducts = productArr.filter((product) => {
+        product.category.includes("men");
+    });
+    console.log(menProducts);
+};

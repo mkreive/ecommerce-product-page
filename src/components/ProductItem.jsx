@@ -1,4 +1,10 @@
-const ProductItem = function () {
+import { useEffect } from "react";
+import { fetchProducts } from "./helperFunctions";
+
+const ProductItem = function (props) {
+    const product = props;
+    // console.log(product);
+
     return (
         <div className="gallery__shop-product">
             <img
