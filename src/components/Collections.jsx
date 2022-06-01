@@ -9,7 +9,7 @@ function Collections() {
     return (
         <div className="main">
             <div className="gallery gallery__collection">
-                <Link to="collections/men" style={linkStyle}>
+                <Link to="/men" style={linkStyle}>
                     <h1 className="header-big gallery__collection-btn">Men</h1>
                 </Link>
                 <img
@@ -19,7 +19,7 @@ function Collections() {
                 />
             </div>
             <div className="gallery gallery__collection">
-                <Link to="collections/women" style={linkStyle}>
+                <Link to="/women" style={linkStyle}>
                     <h1 className="header-big gallery__collection-btn">
                         Women
                     </h1>
