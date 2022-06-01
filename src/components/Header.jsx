@@ -49,7 +49,7 @@ const Header = (props) => {
                     <li>
                         <a
                             className="navigation__links-link"
-                            href="#collections"
+                            href="/collections"
                             onClick={navigationClickHandler}
                         >
                             Collections
@@ -58,7 +58,7 @@ const Header = (props) => {
                     <li>
                         <a
                             className="navigation__links-link"
-                            href="#Men"
+                            href="/men"
                             onClick={navigationClickHandler}
                         >
                             Men
@@ -67,7 +67,7 @@ const Header = (props) => {
                     <li>
                         <a
                             className="navigation__links-link"
-                            href="#Women"
+                            href="/women"
                             onClick={navigationClickHandler}
                         >
                             Women
@@ -76,7 +76,7 @@ const Header = (props) => {
                     <li>
                         <a
                             className="navigation__links-link"
-                            href="#About"
+                            href="/about"
                             onClick={navigationClickHandler}
                         >
                             About
@@ -85,7 +85,7 @@ const Header = (props) => {
                     <li>
                         <a
                             className="navigation__links-link"
-                            href="#Contact"
+                            href="/contact"
                             onClick={navigationClickHandler}
                         >
                             Contact
