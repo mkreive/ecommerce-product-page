@@ -2,10 +2,11 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./index.scss";
 
 import Header from "./components/Header";
-import Product from "./components/Product";
 import Collections from "./components/Collections";
-import Contact from "./components/Contact";
 import Men from "./components/Men";
+import Product from "./components/Product";
+import About from "./components/About";
+import Contact from "./components/Contact";
 
 const App = function () {
     return (
@@ -17,7 +18,7 @@ const App = function () {
                 <Route path="/product" element={<Product />} />
                 <Route path="/men/*" element={<Men />} />
                 <Route path="/women/*" element={<Men />} />
-                <Route path="/about" element={<Product />} />
+                <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>
         </div>
