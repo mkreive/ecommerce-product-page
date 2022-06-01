@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { getLocalStorage, fetchUserData } from "./helperFunctions";
 
 import "../index.scss";
 import Account from "./Account";
@@ -6,42 +7,18 @@ import AccountPopUp from "./AccountPopUp";
 import Cart from "./Cart";
 import Collections from "./Collections";
 
-// local storage
-const getLocalStorage = function (key) {
-    const data = JSON.parse(localStorage.getItem(key));
-    return data;
-};
-const setLocalStorage = function (key, value) {
-    localStorage.setItem(key, JSON.stringify(value));
-};
-setLocalStorage("userId", "u3");
-
 const Header = (props) => {
     const [user, setUser] = useState([]);
     useEffect(() => {
-        const fetchUserData = async function () {
+        const getUser = async function () {
             let loggedUserId = getLocalStorage("userId");
             if (!loggedUserId) {
                 loggedUserId = "u0";
             }
-            const response = await fetch(
-                `https://to-do-list-app-10ca0-default-rtdb.europe-west1.firebasedatabase.app/users.json?orderBy=%22id%22&equalTo=%22${loggedUserId}%22`
-            );
-            const responseData = await response.json();
-            let userData;
-
-            for (const key in responseData) {
-                userData = {
-                    id: key,
-                    name: responseData[key].name,
-                    photo: responseData[key].photo,
-                    cart: responseData[key].cart,
-                };
-            }
+            const userData = await fetchUserData(loggedUserId);
             setUser(userData);
-            // return user;
         };
-        fetchUserData();
+        getUser();
     }, []);
 
     const navigationClickHandler = function (e) {

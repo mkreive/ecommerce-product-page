@@ -11,7 +11,6 @@ const App = function () {
     const [main, setMain] = useState(<Collections></Collections>);
 
     const navigationClickHandler = function (clickedBtn) {
-        // react-router!!
         setMain(<Product />);
     };
     return (
