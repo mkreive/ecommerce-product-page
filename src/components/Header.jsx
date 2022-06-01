@@ -14,7 +14,7 @@ const getLocalStorage = function (key) {
 const setLocalStorage = function (key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 };
-// setLocalStorage("userId", "u1");
+setLocalStorage("userId", "u3");
 
 const Header = (props) => {
     const [user, setUser] = useState([]);
@@ -39,7 +39,7 @@ const Header = (props) => {
                 };
             }
             setUser(userData);
-            return user;
+            // return user;
         };
         fetchUserData();
     }, []);
