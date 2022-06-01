@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./index.scss";
 
 import Header from "./components/Header";
@@ -12,7 +12,8 @@ const App = function () {
         <div className="App">
             <Header />
             <Routes>
-                <Route path="/collections" element={<Collections />} />
+                <Route path="/" element={<Navigate to={"/collections"} />} />
+                <Route path="/collections/*" element={<Collections />} />
                 <Route path="/product" element={<Product />} />
                 <Route path="/men/*" element={<AllProducts />} />
                 <Route path="/women/*" element={<AllProducts />} />

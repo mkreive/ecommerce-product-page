@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { getLocalStorage, fetchUserData } from "./helperFunctions";
 
 import "../index.scss";
+import Navigation from "./Navigation";
+import Cart from "./Cart";
 import Account from "./Account";
 import AccountPopUp from "./AccountPopUp";
-import Cart from "./Cart";
-import Collections from "./Collections";
 
 const Header = (props) => {
     const [user, setUser] = useState([]);
@@ -20,11 +20,6 @@ const Header = (props) => {
         };
         getUser();
     }, []);
-
-    const navigationClickHandler = function (e) {
-        const clickedLink = e.target.innerHTML;
-        props.onNavigationClick(clickedLink);
-    };
 
     const [popup, setPopup] = useState("");
     const accountIconClickHandler = function () {
@@ -44,55 +39,7 @@ const Header = (props) => {
                 src="https://res.cloudinary.com/kreiva/image/upload/v1653033617/FrontendMentor/EcommerceProductPage/logo_d2dxhh.svg"
                 alt="logo"
             ></img>
-            <nav className="navigation">
-                <ul className="navigation__links">
-                    <li>
-                        <a
-                            className="navigation__links-link"
-                            href="/collections"
-                            onClick={navigationClickHandler}
-                        >
-                            Collections
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="navigation__links-link"
-                            href="/men"
-                            onClick={navigationClickHandler}
-                        >
-                            Men
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="navigation__links-link"
-                            href="/women"
-                            onClick={navigationClickHandler}
-                        >
-                            Women
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="navigation__links-link"
-                            href="/about"
-                            onClick={navigationClickHandler}
-                        >
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a
-                            className="navigation__links-link"
-                            href="/contact"
-                            onClick={navigationClickHandler}
-                        >
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <Navigation />
             <img
                 onClick={cartPopupHandler}
                 className="cart"
