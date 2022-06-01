@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { fetchProducts } from "./helperFunctions";
-
 const ProductItem = function (props) {
     const product = props.product;
 
@@ -18,12 +15,24 @@ const ProductItem = function (props) {
                 <div className="price">
                     <span className="header-medium price-now">
                         $
-                        {product.price -
-                            (product.price * product.discount) / 100}
+                        {product.discount > 0
+                            ? product.price -
+                              (product.price * product.discount) / 100
+                            : product.price}
                     </span>
-                    <span className="price-discount">{product.discount}%</span>
+                    {product.discount > 0 ? (
+                        <span className="price-discount">
+                            {product.discount}%
+                        </span>
+                    ) : (
+                        ""
+                    )}
                 </div>
-                <div className="price-before">${product.price}</div>
+                {product.discount > 0 ? (
+                    <div className="price-before">${product.price}</div>
+                ) : (
+                    ""
+                )}
             </div>
         </div>
     );

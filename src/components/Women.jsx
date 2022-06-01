@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { fetchProducts, menFilter } from "./helperFunctions";
+import { fetchProducts, ladyFilter } from "./helperFunctions";
 import ProductItem from "./ProductItem";
 
-const Men = function () {
+const Women = function () {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
         const getProducts = async function () {
             const fetchedData = await fetchProducts();
             const allProducts = Object.values(fetchedData);
-            const menProducts = menFilter(allProducts);
-            setProducts(menProducts);
+            const womenProducts = ladyFilter(allProducts);
+            setProducts(womenProducts);
         };
         getProducts();
     }, []);
@@ -26,4 +26,4 @@ const Men = function () {
     );
 };
 
-export default Men;
+export default Women;

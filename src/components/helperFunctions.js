@@ -51,3 +51,14 @@ export const menFilter = function (productArr) {
     });
     return menProducts;
 };
+
+export const ladyFilter = function (productArr) {
+    const ladyProducts = [];
+    productArr.filter((product) => {
+        if (product.category.includes("lady")) {
+            ladyProducts.push(product);
+        }
+    });
+
+    return ladyProducts;
+};
