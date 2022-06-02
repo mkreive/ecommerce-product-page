@@ -1,6 +1,20 @@
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "../index.scss";
+import { fetchProductById } from "./helperFunctions";
 
-function Product() {
+const Product = function () {
+    const [product, setProduct] = useState([]);
+    const productId = useParams().productId;
+
+    useEffect(() => {
+        const getProduct = async function () {
+            const fetchedProduct = await fetchProductById(productId);
+            setProduct(fetchedProduct);
+        };
+        getProduct();
+    }, []);
+
     return (
         <main className="main">
             <div className="gallery">
@@ -10,47 +24,49 @@ function Product() {
                 </div>
                 <img
                     className="gallery__picture-big"
-                    src="https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/image-product-1_ra55jy.jpg"
+                    src={product.photo}
                     alt="product"
                 ></img>
                 <div className="gallery__thumbnails">
                     <img
-                        className="gallery__picture-small selected"
-                        src="https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/image-product-1-thumbnail_qfqqjm.jpg"
+                        className="gallery__picture-small"
+                        src={product.photo}
                         alt="product"
                     ></img>
 
                     <img
                         className="gallery__picture-small"
-                        src="https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/image-product-3-thumbnail_drkel7.jpg"
+                        src={product.photo}
                         alt="product"
                     ></img>
                     <img
                         className="gallery__picture-small"
-                        src="https://res.cloudinary.com/kreiva/image/upload/v1653033617/FrontendMentor/EcommerceProductPage/image-product-4-thumbnail_qcdzs1.jpg"
+                        src={product.photo}
                         alt="product"
                     ></img>
                     <img
                         className="gallery__picture-small"
-                        src="https://res.cloudinary.com/kreiva/image/upload/v1653033617/FrontendMentor/EcommerceProductPage/image-product-2-thumbnail_bbmf5h.jpg"
+                        src={product.photo}
                         alt="product"
                     ></img>
                 </div>
             </div>
             <div className="product">
-                <h3 className="header-small">Sneaker company</h3>
-                <h1 className="header-big">Fall limited edition sneakers</h1>
-                <p className="text">
-                    These low profile sneakersare your perfect casual wear
-                    companion. Featuring adurable rubberouter sole they'll
-                    withstandeverything theweather can offer.
-                </p>
+                <h3 className="header-small">{product.company}</h3>
+                <h1 className="header-big">{product.title}</h1>
+                <p className="text">{product.description}</p>
                 <div className="prices">
                     <div className="price">
-                        <span className="header-medium price-now">$125.00</span>
-                        <span className="price-discount">50%</span>
+                        <span className="header-medium price-now">
+                            $
+                            {product.price -
+                                (product.price * product.discount) / 100}
+                        </span>
+                        <span className="price-discount">
+                            {product.discount}%
+                        </span>
                     </div>
-                    <div className="price-before">$250.00</div>
+                    <div className="price-before">${product.price}</div>
                 </div>
                 <div className="addtocart">
                     <div className="addtocart__quantity">
@@ -63,6 +79,6 @@ function Product() {
             </div>
         </main>
     );
-}
+};
 
 export default Product;

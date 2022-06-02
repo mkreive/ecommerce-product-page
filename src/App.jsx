@@ -16,11 +16,11 @@ const App = function () {
             <Routes>
                 <Route path="/" element={<Navigate to={"/collections"} />} />
                 <Route path="/collections/*" element={<Collections />} />
-                <Route path="/product/*" element={<Product />} />
                 <Route path="/men/*" element={<Men />} />
                 <Route path="/women/*" element={<Women />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/product/:productId" element={<Product />} />
             </Routes>
         </div>
     );

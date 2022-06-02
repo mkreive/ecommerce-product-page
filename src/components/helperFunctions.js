@@ -41,6 +41,16 @@ export const fetchProducts = async function () {
     return responseData;
 };
 
+// FETCHING PRODUCT BY ID
+export const fetchProductById = async function (id) {
+    const response = await fetch(
+        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products.json?orderBy=%22id%22&equalTo=%22${id}%22`
+    );
+    const responseData = await response.json();
+    const [product] = Object.values(responseData);
+    return product;
+};
+
 // PRODUCTS FILTERS
 export const menFilter = function (productArr) {
     const menProducts = [];

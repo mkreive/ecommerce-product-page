@@ -9,7 +9,7 @@ const ProductItem = function (props) {
 
     return (
         <div className="gallery__shop-product">
-            <Link to={`/product/${sneaker.id}`} style={linkStyle}>
+            <Link style={linkStyle} to={`/product/${sneaker.id}`}>
                 <img
                     className="gallery__picture-big"
                     src={sneaker.photo}
