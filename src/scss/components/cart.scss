@@ -1,13 +1,30 @@
 .cart {
-    height: auto;
-    flex-basis: 5%;
-    padding-right: 4rem;
+    &__btn {
+        border: none;
+        width: auto;
+        flex-basis: 5%;
+        margin-right: 1rem;
+        background-color: white;
 
-    @include respond(phone) {
-        padding-right: 2.5rem;
-    }
-
-    &:hover {
-        cursor: pointer;
+        &:hover {
+            cursor: pointer;
+        }
+        &-icon {
+            background-image: url("https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-cart_tpxhw0.svg");
+            background-repeat: no-repeat;
+            background-position: 0% 100%;
+            background-color: white;
+            height: 3rem;
+        }
+        &-count {
+            font-size: 1.3rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: $color-primary-orange;
+            padding: 0.2rem 0.6rem;
+            border-radius: 2rem;
+            position: relative;
+            left: 0rem;
+        }
     }
 }

@@ -3,9 +3,8 @@ import { getLocalStorage, fetchUserData } from "./helperFunctions";
 
 import "../index.scss";
 import Navigation from "./Navigation";
-import Cart from "./Cart";
+import CartButton from "./CartButton";
 import Account from "./Account";
-import AccountPopUp from "./AccountPopUp";
 
 const Header = (props) => {
     const [user, setUser] = useState([]);
@@ -19,18 +18,7 @@ const Header = (props) => {
             setUser(userData);
         };
         getUser();
-    }, []);
-
-    const [popup, setPopup] = useState("");
-    const accountIconClickHandler = function () {
-        setPopup(
-            <AccountPopUp name={user.name} cart={user.cart} id={user.id} />
-        );
-    };
-
-    const cartPopupHandler = function () {
-        setPopup(<Cart cart={user.cart} />);
-    };
+    }, [user]);
 
     return (
         <header className="header">
@@ -40,17 +28,8 @@ const Header = (props) => {
                 alt="logo"
             ></img>
             <Navigation />
-            <img
-                onClick={cartPopupHandler}
-                className="cart"
-                src="https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-cart_tpxhw0.svg"
-                alt="cart"
-            ></img>
-            <Account
-                user={user}
-                onAccountClick={accountIconClickHandler}
-            ></Account>
-            {popup}
+            <CartButton cart={user.cart} />
+            <Account user={user}></Account>
         </header>
     );
 };
