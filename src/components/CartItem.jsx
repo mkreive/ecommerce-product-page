@@ -16,10 +16,10 @@ const CartItem = function (props) {
                 <div className="text-small-margin">{item.product}</div>
                 <div className="price__group">
                     <span className="text">
-                        ${item.price} x {item.quantity}
+                        €{item.price} x {item.quantity}
                     </span>
                     <span className="text-bold">
-                        ${item.price * item.quantity}
+                        €{item.price * item.quantity}
                     </span>
                 </div>
             </div>

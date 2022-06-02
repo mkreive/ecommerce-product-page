@@ -58,7 +58,7 @@ const Product = function () {
                 <div className="prices">
                     <div className="price">
                         <span className="header-medium price-now">
-                            $
+                            €
                             {product.price -
                                 (product.price * product.discount) / 100}
                         </span>
@@ -66,7 +66,7 @@ const Product = function () {
                             {product.discount}%
                         </span>
                     </div>
-                    <div className="price-before">${product.price}</div>
+                    <div className="price-before">€{product.price}</div>
                 </div>
                 <div className="addtocart">
                     <div className="addtocart__quantity">

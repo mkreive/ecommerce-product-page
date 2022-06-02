@@ -21,7 +21,7 @@ const ProductItem = function (props) {
                 <div className="prices">
                     <div className="price">
                         <span className="header-medium price-now">
-                            $
+                            €
                             {sneaker.discount > 0
                                 ? sneaker.price -
                                   (sneaker.price * sneaker.discount) / 100
@@ -36,7 +36,7 @@ const ProductItem = function (props) {
                         )}
                     </div>
                     {sneaker.discount > 0 ? (
-                        <div className="price-before">${sneaker.price}</div>
+                        <div className="price-before">€{sneaker.price}</div>
                     ) : (
                         ""
                     )}
