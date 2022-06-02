@@ -1,39 +1,47 @@
+import { Link } from "react-router-dom";
+const linkStyle = {
+    textDecoration: "none",
+    color: "black",
+};
+
 const ProductItem = function (props) {
-    const product = props.product;
+    const sneaker = props.product;
 
     return (
         <div className="gallery__shop-product">
-            <img
-                className="gallery__picture-big"
-                src={product.photo}
-                alt="product"
-            ></img>
+            <Link to={`/product/${sneaker.id}`} style={linkStyle}>
+                <img
+                    className="gallery__picture-big"
+                    src={sneaker.photo}
+                    alt="product"
+                ></img>
 
-            <h1 className="header-small">{product.title}</h1>
+                <h1 className="header-small">{sneaker.title}</h1>
 
-            <div className="prices">
-                <div className="price">
-                    <span className="header-medium price-now">
-                        $
-                        {product.discount > 0
-                            ? product.price -
-                              (product.price * product.discount) / 100
-                            : product.price}
-                    </span>
-                    {product.discount > 0 ? (
-                        <span className="price-discount">
-                            {product.discount}%
+                <div className="prices">
+                    <div className="price">
+                        <span className="header-medium price-now">
+                            $
+                            {sneaker.discount > 0
+                                ? sneaker.price -
+                                  (sneaker.price * sneaker.discount) / 100
+                                : sneaker.price}
                         </span>
+                        {sneaker.discount > 0 ? (
+                            <span className="price-discount">
+                                {sneaker.discount}%
+                            </span>
+                        ) : (
+                            ""
+                        )}
+                    </div>
+                    {sneaker.discount > 0 ? (
+                        <div className="price-before">${sneaker.price}</div>
                     ) : (
                         ""
                     )}
                 </div>
-                {product.discount > 0 ? (
-                    <div className="price-before">${product.price}</div>
-                ) : (
-                    ""
-                )}
-            </div>
+            </Link>
         </div>
     );
 };

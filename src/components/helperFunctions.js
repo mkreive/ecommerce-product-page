@@ -11,7 +11,7 @@ export const removeLocalStorage = function (key, value) {
     const data = getLocalStorage(key);
     if (data === value) window.localStorage.removeItem(key);
 };
-// setLocalStorage("userId", "u3");
+setLocalStorage("userId", "u1");
 
 // FETCHING DATA
 export const fetchUserData = async function (userId) {
