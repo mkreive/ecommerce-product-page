@@ -7,7 +7,7 @@ import CartButton from "./CartButton";
 import Account from "./Account";
 
 const Header = (props) => {
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
     useEffect(() => {
         const getUser = async function () {
             let loggedUserId = getLocalStorage("userId");
@@ -18,7 +18,7 @@ const Header = (props) => {
             setUser(userData);
         };
         getUser();
-    }, [user]);
+    }, []);
 
     return (
         <header className="header">
@@ -28,8 +28,8 @@ const Header = (props) => {
                 alt="logo"
             ></img>
             <Navigation />
-            <CartButton cart={user.cart} />
-            <Account user={user}></Account>
+            {user.cart && <CartButton cart={user.cart} />}
+            {user.photo && <Account user={user}></Account>}
         </header>
     );
 };

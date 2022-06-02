@@ -1,11 +1,11 @@
 const CartButton = function (props) {
     const cart = props.cart;
-    console.log(Object.keys(cart).length);
+    const count = Object.keys(cart).length;
 
     return (
         <button className="cart__btn">
             <div className="cart__btn-icon">
-                <span className="cart__btn-count">2</span>
+                <span className="cart__btn-count">{count}</span>
             </div>
         </button>
     );
