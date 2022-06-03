@@ -1,14 +1,11 @@
 import "../index.scss";
-
-const removeLocalStorage = function (key, value) {
-    if (!key || !value) return;
-    window.localStorage.removeItem(key);
-};
+import { removeLocalStorage } from "./helperFunctions";
 
 const AccountPopUp = function (props) {
     const userName = props.name.toUpperCase();
     const productCount = Object.keys(props.cart).length;
     const userId = props.id;
+    console.log(userId);
 
     const logoutHandler = function () {
         removeLocalStorage("userId", userId);
