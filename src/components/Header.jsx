@@ -20,6 +20,13 @@ const Header = (props) => {
         getUser();
     }, []);
 
+    const cartClickHandler = function () {
+        console.log("cart clicked");
+    };
+    const accountClickHandler = function () {
+        console.log("account btn clicked");
+    };
+
     return (
         <header className="header">
             <img
@@ -28,8 +35,12 @@ const Header = (props) => {
                 alt="logo"
             ></img>
             <Navigation />
-            {user.cart && <CartButton cart={user.cart} />}
-            {user.photo && <Account user={user}></Account>}
+            {user.cart && (
+                <CartButton cart={user.cart} onCartClick={cartClickHandler} />
+            )}
+            {user.photo && (
+                <Account user={user} onAccountClick={accountClickHandler} />
+            )}
         </header>
     );
 };
