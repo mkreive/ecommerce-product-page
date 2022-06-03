@@ -3,7 +3,7 @@ const CartButton = function (props) {
     const count = Object.keys(cart).length;
 
     return (
-        <button className="cart__btn" onClick={props.onCartClick}>
+        <button className="cart__btn" onClick={props.onCartBtnClick}>
             <div className="cart__btn-icon">
                 <span className="cart__btn-count">{count}</span>
             </div>

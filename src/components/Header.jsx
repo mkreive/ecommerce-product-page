@@ -5,25 +5,13 @@ import { getLocalStorage, fetchUserData } from "./helperFunctions";
 import "../index.scss";
 import Navigation from "./Navigation";
 import CartButton from "./CartButton";
-import Cart from "./Cart";
+
 import Account from "./Account";
 import AccountPopUp from "./AccountPopUp";
 
 const Header = (props) => {
     const [user, setUser] = useState({});
-    const [overlayCart, setOverlayCart] = useState();
-    const [overlayAccount, setOverlayAccount] = useState();
-
-    const CartOverlay = function (props) {
-        return (
-            <Fragment>
-                {ReactDOM.createPortal(
-                    <Cart cart={props.cart} />,
-                    document.getElementById("overlay-root")
-                )}
-            </Fragment>
-        );
-    };
+    // const [overlayAccount, setOverlayAccount] = useState();
 
     const AccountOverlay = function (props) {
         return (
@@ -52,38 +40,29 @@ const Header = (props) => {
         getUser();
     }, []);
 
-    const cartClickHandler = function () {
-        if (overlayCart) {
-            setOverlayCart(null);
-        } else if (overlayAccount) {
-            setOverlayAccount(null);
-            setOverlayCart(true);
-        } else {
-            setOverlayCart(true);
-        }
-    };
-
-    const accountClickHandler = function () {
-        if (overlayAccount) {
-            setOverlayAccount(null);
-        } else if (overlayCart) {
-            setOverlayCart(null);
-            setOverlayAccount(true);
-        } else {
-            setOverlayAccount(true);
-        }
+    // const accountClickHandler = function () {
+    //     if (overlayAccount) {
+    //         setOverlayAccount(null);
+    //     } else if (overlayCart) {
+    //         setOverlayCart(null);
+    //         setOverlayAccount(true);
+    //     } else {
+    //         setOverlayAccount(true);
+    //     }
+    // };
+    const cardBtnClickHandler = function () {
+        props.onShowCart(user);
     };
 
     return (
         <Fragment>
-            {overlayCart && <CartOverlay cart={user.cart} />}
-            {overlayAccount && (
+            {/* {overlayAccount && (
                 <AccountOverlay
                     userName={user.name}
                     cart={user.cart}
                     userId={user.id}
                 />
-            )}
+            )} */}
             <header className="header">
                 <img
                     className="logo"
@@ -94,12 +73,12 @@ const Header = (props) => {
                 {user.cart && (
                     <CartButton
                         cart={user.cart}
-                        onCartClick={cartClickHandler}
+                        onCartBtnClick={cardBtnClickHandler}
                     />
                 )}
-                {user.photo && (
+                {/* {user.photo && (
                     <Account user={user} onAccountClick={accountClickHandler} />
-                )}
+                )} */}
             </header>
         </Fragment>
     );
