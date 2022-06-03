@@ -5,15 +5,28 @@ import { fetchProductById } from "./helperFunctions";
 
 const Product = function () {
     const [product, setProduct] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const productId = useParams().productId;
 
     useEffect(() => {
         const getProduct = async function () {
+            setIsLoading(true);
             const fetchedProduct = await fetchProductById(productId);
             setProduct(fetchedProduct);
+            setIsLoading(false);
         };
         getProduct();
     }, []);
+
+    if (isLoading) {
+        return (
+            <main className="main">
+                <div className="gallery__shop">
+                    <h1 className="header-small">Loading... </h1>
+                </div>
+            </main>
+        );
+    }
 
     return (
         <main className="main">
