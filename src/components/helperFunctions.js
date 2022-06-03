@@ -16,7 +16,7 @@ setLocalStorage("userId", "u1");
 // FETCHING DATA
 export const fetchUserData = async function (userId) {
     const response = await fetch(
-        `https://to-do-list-app-10ca0-default-rtdb.europe-west1.firebasedatabase.app/users.json?orderBy=%22id%22&equalTo=%22${userId}%22`
+        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users.json?orderBy=%22id%22&equalTo=%22${userId}%22`
     );
     const responseData = await response.json();
     let userData;

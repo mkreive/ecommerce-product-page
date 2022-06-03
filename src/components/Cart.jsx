@@ -10,7 +10,7 @@ const Cart = function (props) {
             <hr className="card__line" />
             <div className="card__content">
                 {Object.values(userCart).map((item) => (
-                    <CartItem key={item.product} item={item} />
+                    <CartItem key={item} item={item} />
                 ))}
             </div>
             <button className="btn btn-popup">Checkout</button>

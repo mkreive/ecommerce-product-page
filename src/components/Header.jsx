@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import ReactDOM from "react-dom";
 import { getLocalStorage, fetchUserData } from "./helperFunctions";
 
 import "../index.scss";
 import Navigation from "./Navigation";
 import CartButton from "./CartButton";
+import Cart from "./Cart";
 import Account from "./Account";
+import AccountPopUp from "./AccountPopUp";
 
 const Header = (props) => {
     const [user, setUser] = useState({});
@@ -21,10 +24,30 @@ const Header = (props) => {
     }, []);
 
     const cartClickHandler = function () {
-        console.log("cart clicked");
+        console.log("cart btn clicked");
+        return (
+            <Fragment>
+                {ReactDOM.createPortal(
+                    <Cart cart={user.cart} />,
+                    document.getElementById("overlay-root")
+                )}
+            </Fragment>
+        );
     };
     const accountClickHandler = function () {
         console.log("account btn clicked");
+        return (
+            <Fragment>
+                {ReactDOM.createPortal(
+                    <AccountPopUp
+                        cart={user.cart}
+                        user={user.name}
+                        id={user.id}
+                    />,
+                    document.getElementById("overlay-root")
+                )}
+            </Fragment>
+        );
     };
 
     return (
