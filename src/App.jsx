@@ -10,10 +10,12 @@ import Product from "./components/Product";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
+import AccountPopUp from "./components/AccountPopUp";
 
 const App = function () {
     const [user, setUser] = useState({});
     const [cartIsShown, setCartIsShown] = useState(false);
+    const [accountIsShown, setAccountIsShown] = useState(false);
 
     const showCartHandler = function (props) {
         if (!cartIsShown) {
@@ -23,11 +25,23 @@ const App = function () {
         }
         setUser(props);
     };
+    const showAccountHandler = function (props) {
+        if (!accountIsShown) {
+            setAccountIsShown(true);
+        } else if (accountIsShown) {
+            setAccountIsShown(false);
+        }
+        setUser(props);
+    };
 
     return (
         <div className="App">
             {cartIsShown && <Cart cart={user.cart} />}
-            <Header onShowCart={showCartHandler} />
+            {accountIsShown && <AccountPopUp user={user} />}
+            <Header
+                onShowCart={showCartHandler}
+                onShowAccount={showAccountHandler}
+            />
             <Routes>
                 <Route path="/" element={<Navigate to={"/collections"} />} />
                 <Route path="/collections/*" element={<Collections />} />

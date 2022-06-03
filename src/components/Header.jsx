@@ -11,22 +11,6 @@ import AccountPopUp from "./AccountPopUp";
 
 const Header = (props) => {
     const [user, setUser] = useState({});
-    // const [overlayAccount, setOverlayAccount] = useState();
-
-    const AccountOverlay = function (props) {
-        return (
-            <Fragment>
-                {ReactDOM.createPortal(
-                    <AccountPopUp
-                        name={props.userName}
-                        cart={props.cart}
-                        id={props.userId}
-                    />,
-                    document.getElementById("overlay-root")
-                )}
-            </Fragment>
-        );
-    };
 
     useEffect(() => {
         const getUser = async function () {
@@ -40,29 +24,15 @@ const Header = (props) => {
         getUser();
     }, []);
 
-    // const accountClickHandler = function () {
-    //     if (overlayAccount) {
-    //         setOverlayAccount(null);
-    //     } else if (overlayCart) {
-    //         setOverlayCart(null);
-    //         setOverlayAccount(true);
-    //     } else {
-    //         setOverlayAccount(true);
-    //     }
-    // };
+    const accountClickHandler = function () {
+        props.onShowAccount(user);
+    };
     const cardBtnClickHandler = function () {
         props.onShowCart(user);
     };
 
     return (
         <Fragment>
-            {/* {overlayAccount && (
-                <AccountOverlay
-                    userName={user.name}
-                    cart={user.cart}
-                    userId={user.id}
-                />
-            )} */}
             <header className="header">
                 <img
                     className="logo"
@@ -76,9 +46,9 @@ const Header = (props) => {
                         onCartBtnClick={cardBtnClickHandler}
                     />
                 )}
-                {/* {user.photo && (
+                {user.photo && (
                     <Account user={user} onAccountClick={accountClickHandler} />
-                )} */}
+                )}
             </header>
         </Fragment>
     );
