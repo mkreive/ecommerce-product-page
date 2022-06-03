@@ -55,6 +55,9 @@ const Header = (props) => {
     const cartClickHandler = function () {
         if (overlayCart) {
             setOverlayCart(null);
+        } else if (overlayAccount) {
+            setOverlayAccount(null);
+            setOverlayCart(true);
         } else {
             setOverlayCart(true);
         }
@@ -63,28 +66,22 @@ const Header = (props) => {
     const accountClickHandler = function () {
         if (overlayAccount) {
             setOverlayAccount(null);
+        } else if (overlayCart) {
+            setOverlayCart(null);
+            setOverlayAccount(true);
         } else {
             setOverlayAccount(true);
         }
     };
 
-    const onConfirmHandler = function () {
-        // checkout btn
-        console.log("confirm clicked");
-        // setOverlayCart (null);
-    };
-
     return (
         <Fragment>
-            {overlayCart && (
-                <CartOverlay cart={user.cart} onClick={onConfirmHandler} />
-            )}
+            {overlayCart && <CartOverlay cart={user.cart} />}
             {overlayAccount && (
                 <AccountOverlay
                     userName={user.name}
                     cart={user.cart}
                     userId={user.id}
-                    onClick={onConfirmHandler}
                 />
             )}
             <header className="header">
