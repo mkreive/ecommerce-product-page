@@ -1,4 +1,5 @@
 .header {
+    font-family: inherit;
     &-small {
         font-size: $font-size-header-small;
         letter-spacing: $font-letter-spacing;
@@ -8,6 +9,7 @@
     }
     &-small-black {
         font-size: $font-size-header-small;
+        font-family: "Kumbh Sans", sans-serif;
     }
 
     &-medium {

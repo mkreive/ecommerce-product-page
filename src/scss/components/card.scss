@@ -4,7 +4,7 @@
     top: 12%;
     right: 15%;
     background-color: $color-white;
-    width: 22vw;
+    width: 21vw;
     height: auto;
     padding: 2rem;
     border-radius: 1rem;
@@ -19,15 +19,31 @@
 
     &__content {
         display: flex;
-        justify-content: center;
-        margin-bottom: $margin-bottom-big;
+        flex-direction: column;
         margin-top: $margin-bottom-medium;
         overflow: hidden;
-        align-items: flex-start;
 
-        &-text {
-            line-height: 0;
-            margin: 1rem;
+        &-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin-bottom: $margin-bottom-medium;
+
+            &-text {
+                font-family: "Kumbh Sans", sans-serif;
+                font-size: $font-size-paragraph;
+                color: $color-neutral-dark-grayish-blue;
+
+                line-height: 0;
+                margin: 1rem;
+            }
+            &-delete {
+                margin-left: auto;
+                height: auto;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
         }
     }
 }

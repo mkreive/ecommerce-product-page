@@ -11,6 +11,35 @@ import AccountPopUp from "./AccountPopUp";
 
 const Header = (props) => {
     const [user, setUser] = useState({});
+    const [overlayCart, setOverlayCart] = useState();
+    const [overlayAccount, setOverlayAccount] = useState();
+
+    const CartOverlay = function (props) {
+        return (
+            <Fragment>
+                {ReactDOM.createPortal(
+                    <Cart cart={props.cart} />,
+                    document.getElementById("overlay-root")
+                )}
+            </Fragment>
+        );
+    };
+
+    const AccountOverlay = function (props) {
+        return (
+            <Fragment>
+                {ReactDOM.createPortal(
+                    <AccountPopUp
+                        name={props.userName}
+                        cart={props.cart}
+                        id={props.userId}
+                    />,
+                    document.getElementById("overlay-root")
+                )}
+            </Fragment>
+        );
+    };
+
     useEffect(() => {
         const getUser = async function () {
             let loggedUserId = getLocalStorage("userId");
@@ -24,47 +53,58 @@ const Header = (props) => {
     }, []);
 
     const cartClickHandler = function () {
-        console.log("cart btn clicked");
-        return (
-            <Fragment>
-                {ReactDOM.createPortal(
-                    <Cart cart={user.cart} />,
-                    document.getElementById("overlay-root")
-                )}
-            </Fragment>
-        );
+        if (overlayCart) {
+            setOverlayCart(null);
+        } else {
+            setOverlayCart(true);
+        }
     };
+
     const accountClickHandler = function () {
-        console.log("account btn clicked");
-        return (
-            <Fragment>
-                {ReactDOM.createPortal(
-                    <AccountPopUp
-                        cart={user.cart}
-                        user={user.name}
-                        id={user.id}
-                    />,
-                    document.getElementById("overlay-root")
-                )}
-            </Fragment>
-        );
+        if (overlayAccount) {
+            setOverlayAccount(null);
+        } else {
+            setOverlayAccount(true);
+        }
+    };
+
+    const onConfirmHandler = function () {
+        // checkout btn
+        console.log("confirm clicked");
+        // setOverlayCart (null);
     };
 
     return (
-        <header className="header">
-            <img
-                className="logo"
-                src="https://res.cloudinary.com/kreiva/image/upload/v1653033617/FrontendMentor/EcommerceProductPage/logo_d2dxhh.svg"
-                alt="logo"
-            ></img>
-            <Navigation />
-            {user.cart && (
-                <CartButton cart={user.cart} onCartClick={cartClickHandler} />
+        <Fragment>
+            {overlayCart && (
+                <CartOverlay cart={user.cart} onClick={onConfirmHandler} />
             )}
-            {user.photo && (
-                <Account user={user} onAccountClick={accountClickHandler} />
+            {overlayAccount && (
+                <AccountOverlay
+                    userName={user.name}
+                    cart={user.cart}
+                    userId={user.id}
+                    onClick={onConfirmHandler}
+                />
             )}
-        </header>
+            <header className="header">
+                <img
+                    className="logo"
+                    src="https://res.cloudinary.com/kreiva/image/upload/v1653033617/FrontendMentor/EcommerceProductPage/logo_d2dxhh.svg"
+                    alt="logo"
+                ></img>
+                <Navigation />
+                {user.cart && (
+                    <CartButton
+                        cart={user.cart}
+                        onCartClick={cartClickHandler}
+                    />
+                )}
+                {user.photo && (
+                    <Account user={user} onAccountClick={accountClickHandler} />
+                )}
+            </header>
+        </Fragment>
     );
 };
 export default Header;
