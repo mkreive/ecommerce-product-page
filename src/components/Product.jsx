@@ -1,12 +1,16 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import "../index.scss";
 import { fetchProductById } from "./helperFunctions";
+import CartContext from "../store/cart-context";
 
 const Product = function () {
     const [product, setProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const productId = useParams().productId;
+    const amountInputRef = useRef();
+    const [amountIsVadid, setAmountIsValid] = useState(true);
+    const cartCtx = useContext(CartContext);
 
     useEffect(() => {
         const getProduct = async function () {
@@ -20,7 +24,29 @@ const Product = function () {
 
     const quantityReduceHandler = function () {};
     const quantityAddHandler = function () {};
-    const addToCartHandler = function () {};
+
+    const addToCartHandler = function (event) {
+        event.preventDefault();
+        const enteredAmount = amountInputRef.current.value;
+        const enteredAmountNum = +enteredAmount;
+        if (
+            enteredAmount.trim().length === 0 ||
+            enteredAmountNum < 1 ||
+            enteredAmountNum > 10
+        ) {
+            setAmountIsValid(false);
+            return;
+        }
+        cartCtx.addItem({
+            id: productId,
+            title: product.title,
+            amount: enteredAmountNum,
+            photo: product.photo,
+            price: product.price - (product.price * product.discount) / 100,
+        });
+        console.log(enteredAmountNum);
+        console.log(cartCtx);
+    };
 
     if (isLoading) {
         return (
@@ -91,7 +117,15 @@ const Product = function () {
                             className="addtocart__quantity-minus"
                             onClick={quantityReduceHandler}
                         ></span>
-                        <span className="addtocart__quantity-count">0</span>
+                        <input
+                            className="addtocart__quantity-count"
+                            ref={amountInputRef}
+                            type="number"
+                            min={1}
+                            max={10}
+                            step={1}
+                            placeholder="1"
+                        ></input>
                         <span
                             className="addtocart__quantity-add"
                             onClick={quantityAddHandler}
@@ -99,10 +133,13 @@ const Product = function () {
                     </div>
                     <button
                         className="btn addtocart__btn"
-                        onClick={addToCartHandler}
+                        onSubmit={addToCartHandler}
                     >
                         Add to cart
                     </button>
+                    {!amountIsVadid && (
+                        <p className="text">Please enter a valid amount.</p>
+                    )}
                 </div>
             </div>
         </main>
