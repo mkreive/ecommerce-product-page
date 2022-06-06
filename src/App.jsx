@@ -11,6 +11,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import AccountPopUp from "./components/AccountPopUp";
+import CartProvider from "./store/CartProvider";
 
 const App = function () {
     const [user, setUser] = useState({});
@@ -35,23 +36,28 @@ const App = function () {
     };
 
     return (
-        <div className="App">
-            {cartIsShown && <Cart cart={user.cart} />}
-            {accountIsShown && <AccountPopUp user={user} />}
-            <Header
-                onShowCart={showCartHandler}
-                onShowAccount={showAccountHandler}
-            />
-            <Routes>
-                <Route path="/" element={<Navigate to={"/collections"} />} />
-                <Route path="/collections/*" element={<Collections />} />
-                <Route path="/men/*" element={<Men />} />
-                <Route path="/women/*" element={<Women />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/product/:productId" element={<Product />} />
-            </Routes>
-        </div>
+        <CartProvider>
+            <div className="App">
+                {cartIsShown && <Cart cart={user.cart} />}
+                {accountIsShown && <AccountPopUp user={user} />}
+                <Header
+                    onShowCart={showCartHandler}
+                    onShowAccount={showAccountHandler}
+                />
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<Navigate to={"/collections"} />}
+                    />
+                    <Route path="/collections/*" element={<Collections />} />
+                    <Route path="/men/*" element={<Men />} />
+                    <Route path="/women/*" element={<Women />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/product/:productId" element={<Product />} />
+                </Routes>
+            </div>
+        </CartProvider>
     );
 };
 
