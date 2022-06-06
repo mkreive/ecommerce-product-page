@@ -6,7 +6,6 @@ import { fetchProductById } from "./helperFunctions";
 const Product = function () {
     const [product, setProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    let [productQuantity, setProductQuantity] = useState(0);
     const productId = useParams().productId;
 
     useEffect(() => {
@@ -19,12 +18,9 @@ const Product = function () {
         getProduct();
     }, []);
 
-    const quantityReduceHandler = function () {
-        // setProductQuantity(productQuantity--);
-    };
-    const quantityAddHandler = function () {
-        // setProductQuantity(productQuantity++);
-    };
+    const quantityReduceHandler = function () {};
+    const quantityAddHandler = function () {};
+    const addToCartHandler = function () {};
 
     if (isLoading) {
         return (
@@ -95,15 +91,18 @@ const Product = function () {
                             className="addtocart__quantity-minus"
                             onClick={quantityReduceHandler}
                         ></span>
-                        <span className="addtocart__quantity-count">
-                            {productQuantity}
-                        </span>
+                        <span className="addtocart__quantity-count">0</span>
                         <span
                             className="addtocart__quantity-add"
                             onClick={quantityAddHandler}
                         ></span>
                     </div>
-                    <button className="btn addtocart__btn">Add to cart</button>
+                    <button
+                        className="btn addtocart__btn"
+                        onClick={addToCartHandler}
+                    >
+                        Add to cart
+                    </button>
                 </div>
             </div>
         </main>
