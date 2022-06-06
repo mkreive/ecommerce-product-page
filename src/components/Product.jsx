@@ -20,13 +20,11 @@ const Product = function () {
     }, []);
 
     const quantityReduceHandler = function () {
-        setProductQuantity(productQuantity--);
+        // setProductQuantity(productQuantity--);
     };
     const quantityAddHandler = function () {
-        setProductQuantity(productQuantity++);
+        // setProductQuantity(productQuantity++);
     };
-
-    console.log(productQuantity);
 
     if (isLoading) {
         return (

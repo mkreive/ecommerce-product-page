@@ -1,10 +1,13 @@
 import ReactDOM from "react-dom";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import "../index.scss";
 import CartItem from "./CartItem";
+import CartContext from "../store/cart-context";
 
 const Cart = function (props) {
-    const cartArr = Object.values(props.cart);
+    const cartCtx = useContext(CartContext);
+    const cartItems = cartCtx.items;
+
     return (
         <Fragment>
             {ReactDOM.createPortal(
@@ -12,8 +15,8 @@ const Cart = function (props) {
                     <h3 className="header-small-black">Cart</h3>
                     <hr className="card__line" />
                     <div className="card__content">
-                        {cartArr.length > 0 ? (
-                            cartArr.map((item) => (
+                        {cartItems.length > 0 ? (
+                            cartItems.map((item) => (
                                 <CartItem key={item.id} item={item} />
                             ))
                         ) : (

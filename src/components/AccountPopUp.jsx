@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Fragment } from "react";
 import ReactDOM from "react-dom";
 
 import "../index.scss";
+import CartContext from "../store/cart-context";
 import { removeLocalStorage } from "./helperFunctions";
 
 const AccountPopUp = function (props) {
     const userName = props.user.name.toUpperCase();
-    const productCount = Object.keys(props.user.cart).length;
     const userId = props.user.id;
+
+    const cartCtx = useContext(CartContext);
+    const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
+        return curNumber + item.amount;
+    }, 0);
 
     const logoutHandler = function () {
         removeLocalStorage("userId", userId);
@@ -21,7 +26,7 @@ const AccountPopUp = function (props) {
                     <h3 className="header-small-black">Hello, {userName} </h3>
                     <hr className="card__line"></hr>
                     <div className="text">
-                        You have {productCount} items in your cart!
+                        You have {numberOfCartItems} items in your cart!
                     </div>
                     <div className="btn-group">
                         <button
