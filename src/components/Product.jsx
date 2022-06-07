@@ -45,7 +45,6 @@ const Product = function () {
             price: product.price - (product.price * product.discount) / 100,
         });
         console.log(enteredAmountNum);
-        console.log(cartCtx);
     };
 
     if (isLoading) {
@@ -133,7 +132,7 @@ const Product = function () {
                     </div>
                     <button
                         className="btn addtocart__btn"
-                        onSubmit={addToCartHandler}
+                        onClick={addToCartHandler}
                     >
                         Add to cart
                     </button>

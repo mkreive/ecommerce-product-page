@@ -13,13 +13,13 @@ const CartItem = function (props) {
                 className="gallery__picture-small"
             />
             <div className="card__content-item-text">
-                <div className="text-small-margin">{item.name}</div>
+                <div className="text-small-margin">{item.title}</div>
                 <div className="price__group">
                     <span className="text">
-                        €{item.price} x {item.quantity}
+                        €{item.price} x {item.amount}
                     </span>
                     <span className="text-bold">
-                        €{item.price * item.quantity}
+                        €{item.price * item.amount}
                     </span>
                 </div>
             </div>

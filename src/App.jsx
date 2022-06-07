@@ -12,11 +12,13 @@ import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import AccountPopUp from "./components/AccountPopUp";
 import CartProvider from "./store/CartProvider";
+import Checkout from "./components/Checkout";
 
 const App = function () {
     const [user, setUser] = useState({});
     const [cartIsShown, setCartIsShown] = useState(false);
     const [accountIsShown, setAccountIsShown] = useState(false);
+    const [checkoutIsShown, setCheckoutIsShown] = useState(false);
 
     const showCartHandler = function (props) {
         if (!cartIsShown) {
@@ -34,12 +36,22 @@ const App = function () {
         }
         setUser(props);
     };
+    const showCheckoutHandler = function (props) {
+        if (!checkoutIsShown) {
+            setCheckoutIsShown(true);
+        } else if (checkoutIsShown) {
+            setCheckoutIsShown(false);
+        }
+    };
 
     return (
         <CartProvider>
             <div className="App">
-                {cartIsShown && <Cart cart={user.cart} />}
+                {cartIsShown && (
+                    <Cart onCheckout={showCheckoutHandler} cart={user.cart} />
+                )}
                 {accountIsShown && <AccountPopUp user={user} />}
+                {checkoutIsShown && <Checkout user={user} />}
                 <Header
                     onShowCart={showCartHandler}
                     onShowAccount={showAccountHandler}
