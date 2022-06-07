@@ -9,8 +9,8 @@ const Checkout = function (props) {
     const placeOrderHandler = function () {
         console.log("place order");
     };
-    const removeItemHandler = function () {
-        console.log("checkout remove");
+    const removeItemHandler = function (id) {
+        cartCtx.removeItem(id);
     };
 
     return (

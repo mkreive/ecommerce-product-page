@@ -11,7 +11,7 @@ const Cart = function (props) {
         props.onCheckout(cartCtx);
     };
     const removeItemHandler = function (id) {
-        console.log(id);
+        cartCtx.removeItem(id);
     };
 
     return (
