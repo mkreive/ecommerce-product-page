@@ -1,14 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Fragment } from "react";
 import ReactDOM from "react-dom";
 
 import "../index.scss";
 import CartContext from "../store/cart-context";
+import CartItem from "./CartItem";
 import { removeLocalStorage } from "./helperFunctions";
 
 const AccountPopUp = function (props) {
+    const [prevOrder, setPrevOrder] = useState(null);
     const userName = props.user.name.toUpperCase();
     const userId = props.user.id;
+    const cart = props.user.cart;
 
     const cartCtx = useContext(CartContext);
     const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {
@@ -28,7 +31,14 @@ const AccountPopUp = function (props) {
                     <div className="text">
                         You have {numberOfCartItems} items in your cart!
                     </div>
+
                     <div className="btn-group">
+                        {/* <button
+                            className="btn btn-popup"
+                            onClick={prevOrderHandler}
+                        >
+                            Previous Order
+                        </button> */}
                         <button
                             className="btn btn-popup"
                             onClick={logoutHandler}

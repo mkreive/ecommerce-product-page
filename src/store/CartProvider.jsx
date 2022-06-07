@@ -1,5 +1,6 @@
 import CartContext from "./cart-context";
 import { useReducer } from "react";
+import { fetchOrder } from "../components/helperFunctions";
 
 const defaultCartState = { items: [], totalAmount: 0 };
 const cartReducer = function (state, action) {
@@ -45,6 +46,13 @@ const cartReducer = function (state, action) {
             totalAmount: updatedTotalAmount,
         };
     }
+
+    if (action.type === "ORDER") {
+        const userId = action.user.id;
+        const cart = state.items;
+        fetchOrder(userId, cart);
+    }
+
     return defaultCartState;
 };
 
@@ -60,12 +68,16 @@ const CartProvider = function (props) {
     const removeItemFromCartHandler = function (id) {
         dispatchCartAction({ type: "REMOVE", id: id });
     };
+    const placeOrderHandler = function (user) {
+        dispatchCartAction({ type: "ORDER", user: user });
+    };
 
     const cartContext = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler,
+        order: placeOrderHandler,
     };
 
     return (

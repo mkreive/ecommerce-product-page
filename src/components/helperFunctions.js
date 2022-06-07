@@ -31,8 +31,17 @@ export const fetchUserData = async function (userId) {
     }
     return userData;
 };
+export const fetchOrder = async function (userId, cart) {
+    fetch(
+        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users/${userId}/.json`,
+        {
+            method: "PATCH",
+            body: JSON.stringify({ cart: Object.assign(cart) }),
+        }
+    );
+};
 
-// FETCHIN PRODUCTS
+// FETCHING PRODUCTS
 export const fetchProducts = async function () {
     const response = await fetch(
         `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products.json`

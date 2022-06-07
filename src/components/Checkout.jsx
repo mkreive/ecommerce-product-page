@@ -5,12 +5,14 @@ import CartItem from "./CartItem";
 const Checkout = function (props) {
     const cartCtx = useContext(CartContext);
     const hasItems = cartCtx.items.length > 0;
+    const user = props.user;
 
-    const placeOrderHandler = function () {
-        console.log("place order");
-    };
     const removeItemHandler = function (id) {
         cartCtx.removeItem(id);
+    };
+
+    const placeOrderHandler = function () {
+        cartCtx.order(user);
     };
 
     return (

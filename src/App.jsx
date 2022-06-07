@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./index.scss";
 
 import Header from "./components/Header";
@@ -13,12 +13,14 @@ import Cart from "./components/Cart";
 import AccountPopUp from "./components/AccountPopUp";
 import CartProvider from "./store/CartProvider";
 import Checkout from "./components/Checkout";
+import CartContext from "./store/cart-context";
 
 const App = function () {
     const [user, setUser] = useState({});
     const [cartIsShown, setCartIsShown] = useState(false);
     const [accountIsShown, setAccountIsShown] = useState(false);
     const [checkoutIsShown, setCheckoutIsShown] = useState(false);
+    const cartCtx = useContext(CartContext);
 
     const showCartHandler = function (props) {
         if (!cartIsShown) {
@@ -46,6 +48,11 @@ const App = function () {
             setCheckoutIsShown(false);
         }
     };
+    const placeOrderHandler = function () {
+        console.log("placing order");
+
+        cartCtx.order(user);
+    };
 
     return (
         <CartProvider>
@@ -58,7 +65,9 @@ const App = function () {
                     />
                 )}
                 {accountIsShown && <AccountPopUp user={user} />}
-                {checkoutIsShown && <Checkout user={user} />}
+                {checkoutIsShown && (
+                    <Checkout onOrder={placeOrderHandler} user={user} />
+                )}
                 <Header
                     onShowCart={showCartHandler}
                     onShowAccount={showAccountHandler}
