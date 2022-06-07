@@ -11,6 +11,7 @@ const Product = function () {
     const amountInputRef = useRef();
     const [amountIsVadid, setAmountIsValid] = useState(true);
     const cartCtx = useContext(CartContext);
+    const [productCount, setProductCount] = useState(1);
 
     useEffect(() => {
         const getProduct = async function () {
@@ -21,9 +22,6 @@ const Product = function () {
         };
         getProduct();
     }, []);
-
-    const quantityReduceHandler = function () {};
-    const quantityAddHandler = function () {};
 
     const addToCartHandler = function (event) {
         event.preventDefault();
@@ -44,7 +42,15 @@ const Product = function () {
             photo: product.photo,
             price: product.price - (product.price * product.discount) / 100,
         });
-        console.log(enteredAmountNum);
+    };
+
+    const onAddHandler = function () {
+        setProductCount(productCount + 1);
+        amountInputRef.current.value = productCount;
+    };
+    const onRemoveHandler = function () {
+        setProductCount(productCount - 1);
+        amountInputRef.current.value = productCount;
     };
 
     if (isLoading) {
@@ -114,7 +120,7 @@ const Product = function () {
                     <div className="addtocart__quantity">
                         <span
                             className="addtocart__quantity-minus"
-                            onClick={quantityReduceHandler}
+                            onClick={onRemoveHandler}
                         ></span>
                         <input
                             className="addtocart__quantity-count"
@@ -123,11 +129,11 @@ const Product = function () {
                             min={1}
                             max={10}
                             step={1}
-                            placeholder="1"
+                            defaultValue={1}
                         ></input>
                         <span
                             className="addtocart__quantity-add"
-                            onClick={quantityAddHandler}
+                            onClick={onAddHandler}
                         ></span>
                     </div>
                     <button
