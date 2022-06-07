@@ -23,6 +23,7 @@ const App = function () {
     const showCartHandler = function (props) {
         if (!cartIsShown) {
             setCartIsShown(true);
+            setAccountIsShown(false);
         } else if (cartIsShown) {
             setCartIsShown(false);
         }
@@ -31,6 +32,7 @@ const App = function () {
     const showAccountHandler = function (props) {
         if (!accountIsShown) {
             setAccountIsShown(true);
+            setCartIsShown(false);
         } else if (accountIsShown) {
             setAccountIsShown(false);
         }
@@ -39,6 +41,7 @@ const App = function () {
     const showCheckoutHandler = function (props) {
         if (!checkoutIsShown) {
             setCheckoutIsShown(true);
+            setCartIsShown(false);
         } else if (checkoutIsShown) {
             setCheckoutIsShown(false);
         }
@@ -48,7 +51,11 @@ const App = function () {
         <CartProvider>
             <div className="App">
                 {cartIsShown && (
-                    <Cart onCheckout={showCheckoutHandler} cart={user.cart} />
+                    <Cart
+                        onCheckout={showCheckoutHandler}
+                        onClose={showCheckoutHandler}
+                        cart={user.cart}
+                    />
                 )}
                 {accountIsShown && <AccountPopUp user={user} />}
                 {checkoutIsShown && <Checkout user={user} />}

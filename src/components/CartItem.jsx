@@ -4,6 +4,10 @@ import "../index.scss";
 const CartItem = function (props) {
     const item = props.item;
 
+    const removeItemHandler = function () {
+        props.onRemove(item.id);
+    };
+
     //const { price, product, quantity, photo } = props?.item || {};
     return (
         <div className="card__content-item">
@@ -27,6 +31,7 @@ const CartItem = function (props) {
                 className="card__content-item-delete"
                 src="https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-delete_o70eii.svg"
                 alt="trash"
+                onClick={removeItemHandler}
             />
         </div>
     );

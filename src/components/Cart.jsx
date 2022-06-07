@@ -10,6 +10,9 @@ const Cart = function (props) {
     const checkoutHandler = function () {
         props.onCheckout(cartCtx);
     };
+    const removeItemHandler = function (id) {
+        console.log(id);
+    };
 
     return (
         <Fragment>
@@ -20,7 +23,14 @@ const Cart = function (props) {
                     <div className="card__content">
                         {cartCtx.items.length > 0 ? (
                             cartCtx.items.map((item) => (
-                                <CartItem key={item.id} item={item} />
+                                <CartItem
+                                    key={item.id}
+                                    item={item}
+                                    onRemove={removeItemHandler.bind(
+                                        null,
+                                        item.id
+                                    )}
+                                />
                             ))
                         ) : (
                             <p className="text">Cart is empty...</p>
