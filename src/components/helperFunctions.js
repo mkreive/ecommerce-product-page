@@ -11,7 +11,7 @@ export const removeLocalStorage = function (key, value) {
     const data = getLocalStorage(key);
     if (data === value) window.localStorage.removeItem(key);
 };
-setLocalStorage("userId", "-N2RWe0ftPmjZ3YhY1d1");
+setLocalStorage('userId', '-N2RWe0ftPmjZ3YhY1d1');
 
 // FETCHING DATA
 export const fetchUserData = async function (userId) {
@@ -32,20 +32,15 @@ export const fetchUserData = async function (userId) {
     return userData;
 };
 export const fetchOrder = async function (userId, cart) {
-    fetch(
-        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users/${userId}.json`,
-        {
-            method: "PATCH",
-            body: JSON.stringify({ cart: cart }),
-        }
-    );
+    fetch(`https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users/${userId}.json`, {
+        method: 'PATCH',
+        body: JSON.stringify({ cart: cart }),
+    });
 };
 
 // FETCHING PRODUCTS
 export const fetchProducts = async function () {
-    const response = await fetch(
-        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products.json`
-    );
+    const response = await fetch(`https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products.json`);
     const responseData = await response.json();
     return responseData;
 };
@@ -68,20 +63,17 @@ export const reduceStock = async function (productId, amount) {
     const productStock = await response.json();
     const newStock = productStock - amount;
 
-    fetch(
-        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products/${productId}/stock.json`,
-        {
-            method: "PUT",
-            body: JSON.stringify(newStock),
-        }
-    );
+    fetch(`https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products/${productId}/stock.json`, {
+        method: 'PUT',
+        body: JSON.stringify(newStock),
+    });
 };
 
 // PRODUCTS FILTERS
 export const menFilter = function (productArr) {
     const menProducts = [];
     productArr.filter((product) => {
-        if (product.category.includes("men")) {
+        if (product.category.includes('men')) {
             menProducts.push(product);
         }
     });
@@ -91,10 +83,9 @@ export const menFilter = function (productArr) {
 export const ladyFilter = function (productArr) {
     const ladyProducts = [];
     productArr.filter((product) => {
-        if (product.category.includes("lady")) {
+        if (product.category.includes('lady')) {
             ladyProducts.push(product);
         }
+        return ladyProducts;
     });
-
-    return ladyProducts;
 };

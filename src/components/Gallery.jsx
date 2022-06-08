@@ -1,5 +1,5 @@
-import ReactDOM from "react-dom";
-import { Fragment } from "react";
+import ReactDOM from 'react-dom';
+import React, { Fragment } from 'react';
 
 const Gallery = function (props) {
     const product = props.product;
@@ -12,7 +12,7 @@ const Gallery = function (props) {
     };
     return (
         <Fragment>
-            <div className="gallery">
+            <div className='gallery'>
                 {/* <div className="gallery__arrows">
                     <button
                         className="gallery__arrows-left"
@@ -24,33 +24,17 @@ const Gallery = function (props) {
                     ></button>
                 </div> */}
                 <img
-                    className="gallery__picture-big"
+                    className='gallery__picture-big'
                     src={product.photo}
-                    alt="product"
+                    alt='product'
                     onClick={props.onShowGallery}
                 ></img>
-                <div className="gallery__thumbnails">
-                    <img
-                        className="gallery__picture-small"
-                        src={product.photo}
-                        alt="product"
-                    ></img>
+                <div className='gallery__thumbnails'>
+                    <img className='gallery__picture-small' src={product.photo} alt='product'></img>
 
-                    <img
-                        className="gallery__picture-small"
-                        src={product.photo}
-                        alt="product"
-                    ></img>
-                    <img
-                        className="gallery__picture-small"
-                        src={product.photo}
-                        alt="product"
-                    ></img>
-                    <img
-                        className="gallery__picture-small"
-                        src={product.photo}
-                        alt="product"
-                    ></img>
+                    <img className='gallery__picture-small' src={product.photo} alt='product'></img>
+                    <img className='gallery__picture-small' src={product.photo} alt='product'></img>
+                    <img className='gallery__picture-small' src={product.photo} alt='product'></img>
                 </div>
             </div>
         </Fragment>
