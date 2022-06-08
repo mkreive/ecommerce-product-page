@@ -14,7 +14,7 @@ import AccountPopUp from "./components/AccountPopUp";
 import CartProvider from "./store/CartProvider";
 import Checkout from "./components/Checkout";
 import CartContext from "./store/cart-context";
-import Gallery from "./components/Gallery";
+import Portal from "./components/Portal";
 
 const App = function () {
     const [user, setUser] = useState({});
@@ -59,6 +59,7 @@ const App = function () {
     };
 
     const showGalleryHandler = function () {
+        setGalleryIsShown(true);
         console.log("appse clicked");
     };
 
@@ -72,7 +73,7 @@ const App = function () {
         <CartProvider>
             <div className="App">
                 {galleryIsShown && (
-                    <Gallery onPrev={prevHandler} onNext={nextHandler} />
+                    <Portal onPrev={prevHandler} onNext={nextHandler} />
                 )}
                 {cartIsShown && (
                     <Cart
@@ -83,8 +84,8 @@ const App = function () {
                 {accountIsShown && <AccountPopUp user={user} />}
                 {checkoutIsShown && (
                     <Checkout
-                        onOrder={placeOrderHandler}
                         user={user}
+                        onOrder={placeOrderHandler}
                         onClose={closeCheckoutHandler}
                     />
                 )}

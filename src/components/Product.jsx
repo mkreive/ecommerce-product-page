@@ -54,7 +54,7 @@ const Product = function () {
         amountInputRef.current.value = productCount;
     };
 
-    const galleryClickHandler = function () {
+    const showGalleryHandler = function () {
         props.onShowGallery(product);
         console.log("clicked");
     };
@@ -71,41 +71,11 @@ const Product = function () {
 
     return (
         <main className="main">
-            <div
-                className="gallery"
+            <Gallery
                 product={product}
-                onClick={galleryClickHandler}
-            >
-                <img
-                    className="gallery__picture-big"
-                    src={product.photo}
-                    alt="product"
-                    onClick={galleryClickHandler}
-                ></img>
-                <div className="gallery__thumbnails">
-                    <img
-                        className="gallery__picture-small"
-                        src={product.photo}
-                        alt="product"
-                    ></img>
+                onShowGallery={showGalleryHandler}
+            ></Gallery>
 
-                    <img
-                        className="gallery__picture-small"
-                        src={product.photo}
-                        alt="product"
-                    ></img>
-                    <img
-                        className="gallery__picture-small"
-                        src={product.photo}
-                        alt="product"
-                    ></img>
-                    <img
-                        className="gallery__picture-small"
-                        src={product.photo}
-                        alt="product"
-                    ></img>
-                </div>
-            </div>
             <div className="product">
                 <h3 className="header-small">{product.company}</h3>
                 <h1 className="header-big">{product.title}</h1>

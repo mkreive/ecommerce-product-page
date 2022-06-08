@@ -12,49 +12,47 @@ const Gallery = function (props) {
     };
     return (
         <Fragment>
-            {ReactDOM.createPortal(
-                <div className="gallery">
-                    <div className="gallery__arrows">
-                        <button
-                            className="gallery__arrows-left"
-                            onClick={prevPhotoHandler}
-                        ></button>
-                        <button
-                            className="gallery__arrows-right"
-                            onClick={nextPhotoHandler}
-                        ></button>
-                    </div>
+            <div className="gallery">
+                {/* <div className="gallery__arrows">
+                    <button
+                        className="gallery__arrows-left"
+                        onClick={prevPhotoHandler}
+                    ></button>
+                    <button
+                        className="gallery__arrows-right"
+                        onClick={nextPhotoHandler}
+                    ></button>
+                </div> */}
+                <img
+                    className="gallery__picture-big"
+                    src={product.photo}
+                    alt="product"
+                    onClick={props.onShowGallery}
+                ></img>
+                <div className="gallery__thumbnails">
                     <img
-                        className="gallery__picture-big"
+                        className="gallery__picture-small"
                         src={product.photo}
                         alt="product"
                     ></img>
-                    <div className="gallery__thumbnails">
-                        <img
-                            className="gallery__picture-small"
-                            src={product.photo}
-                            alt="product"
-                        ></img>
 
-                        <img
-                            className="gallery__picture-small"
-                            src={product.photo}
-                            alt="product"
-                        ></img>
-                        <img
-                            className="gallery__picture-small"
-                            src={product.photo}
-                            alt="product"
-                        ></img>
-                        <img
-                            className="gallery__picture-small"
-                            src={product.photo}
-                            alt="product"
-                        ></img>
-                    </div>
-                </div>,
-                document.getElementById("overlay-root")
-            )}
+                    <img
+                        className="gallery__picture-small"
+                        src={product.photo}
+                        alt="product"
+                    ></img>
+                    <img
+                        className="gallery__picture-small"
+                        src={product.photo}
+                        alt="product"
+                    ></img>
+                    <img
+                        className="gallery__picture-small"
+                        src={product.photo}
+                        alt="product"
+                    ></img>
+                </div>
+            </div>
         </Fragment>
     );
 };
