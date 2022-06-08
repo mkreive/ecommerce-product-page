@@ -1,26 +1,22 @@
-import { NavLink } from "react-router-dom";
-import "../index.scss";
+import { NavLink } from 'react-router-dom';
+import '../index.scss';
+import React from 'react';
 
 const Navigation = function () {
     return (
-        <nav className="navigation">
-            <ul className="navigation__links">
+        <nav className='navigation'>
+            <ul className='navigation__links'>
                 <li>
-                    <NavLink
-                        className="navigation__links-link"
-                        to="/collections"
-                    >
+                    <NavLink className='navigation__links-link' to='/collections'>
                         Collections
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
                         className={(navData) =>
-                            navData.isActive
-                                ? "navigation__links-link active"
-                                : "navigation__links-link "
+                            navData.isActive ? 'navigation__links-link active' : 'navigation__links-link '
                         }
-                        to="/men"
+                        to='/men'
                     >
                         Men
                     </NavLink>
@@ -28,11 +24,9 @@ const Navigation = function () {
                 <li>
                     <NavLink
                         className={(navData) =>
-                            navData.isActive
-                                ? "navigation__links-link active"
-                                : "navigation__links-link "
+                            navData.isActive ? 'navigation__links-link active' : 'navigation__links-link '
                         }
-                        to="/women"
+                        to='/women'
                     >
                         Women
                     </NavLink>
@@ -40,11 +34,9 @@ const Navigation = function () {
                 <li>
                     <NavLink
                         className={(navData) =>
-                            navData.isActive
-                                ? "navigation__links-link active"
-                                : "navigation__links-link "
+                            navData.isActive ? 'navigation__links-link active' : 'navigation__links-link '
                         }
-                        to="/about"
+                        to='/about'
                     >
                         About
                     </NavLink>
@@ -52,11 +44,9 @@ const Navigation = function () {
                 <li>
                     <NavLink
                         className={(navData) =>
-                            navData.isActive
-                                ? "navigation__links-link active"
-                                : "navigation__links-link "
+                            navData.isActive ? 'navigation__links-link active' : 'navigation__links-link '
                         }
-                        to="/contact"
+                        to='/contact'
                     >
                         Contact
                     </NavLink>

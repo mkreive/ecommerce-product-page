@@ -34,7 +34,7 @@ export const fetchUserData = async function (userId) {
 export const fetchOrder = async function (userId, cart) {
     fetch(`https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users/${userId}.json`, {
         method: 'PATCH',
-        body: JSON.stringify({ cart: cart }),
+        body: JSON.stringify({ cart }),
     });
 };
 
@@ -71,21 +71,9 @@ export const reduceStock = async function (productId, amount) {
 
 // PRODUCTS FILTERS
 export const menFilter = function (productArr) {
-    const menProducts = [];
-    productArr.filter((product) => {
-        if (product.category.includes('men')) {
-            menProducts.push(product);
-        }
-    });
-    return menProducts;
+    return productArr.filter((product) => product.category.includes('men'));
 };
 
 export const ladyFilter = function (productArr) {
-    const ladyProducts = [];
-    productArr.filter((product) => {
-        if (product.category.includes('lady')) {
-            ladyProducts.push(product);
-        }
-        return ladyProducts;
-    });
+    return productArr.filter((product) => product.category.includes('lady'));
 };

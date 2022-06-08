@@ -1,6 +1,6 @@
-import { Fragment, useContext, useState } from "react";
-import CartContext from "../store/cart-context";
-import CartItem from "./CartItem";
+import React, { Fragment, useContext, useState } from 'react';
+import CartContext from '../store/cart-context';
+import CartItem from './CartItem';
 
 const Checkout = function (props) {
     const [orderPlaced, setOrderPlaced] = useState(false);
@@ -18,44 +18,37 @@ const Checkout = function (props) {
     };
 
     return (
-        <div className="card checkout">
-            <h3 className="header-medium">Your Cart</h3>
-            <hr className="card__line" />
+        <div className='card checkout'>
+            <h3 className='header-medium'>Your Cart</h3>
+            <hr className='card__line' />
             {hasItems ? (
-                <div className="card__content">
+                <div className='card__content'>
                     {cartCtx.items.map((item) => (
-                        <CartItem
-                            key={item.id}
-                            item={item}
-                            onRemove={removeItemHandler.bind(null, item.id)}
-                        />
+                        <CartItem key={item.id} item={item} onRemove={removeItemHandler.bind(null, item.id)} />
                     ))}
                 </div>
             ) : (
-                <p className="text">Cart is empty.</p>
+                <p className='text'>Cart is empty.</p>
             )}
             {orderPlaced && (
                 <Fragment>
-                    <hr className="card__line" />
-                    <p className="text">
-                        THANK YOU! Order placed successfully!
-                    </p>
+                    <hr className='card__line' />
+                    <p className='text'>THANK YOU! Order placed successfully!</p>
                 </Fragment>
             )}
-            <hr className="card__line" />
-            <h3 className="header-small">Total:</h3>
-            <p className="header-medium">
-                € {cartCtx.totalAmount.toFixed(2)}{" "}
-                <span className="text">(including Taxes)</span>
+            <hr className='card__line' />
+            <h3 className='header-small'>Total:</h3>
+            <p className='header-medium'>
+                € {cartCtx.totalAmount.toFixed(2)} <span className='text'>(including Taxes)</span>
             </p>
-            <hr className="card__line" />
+            <hr className='card__line' />
             {hasItems && (
-                <button className="btn btn-popup" onClick={placeOrderHandler}>
+                <button className='btn btn-popup' onClick={placeOrderHandler}>
                     Place Order
                 </button>
             )}
-            <p className="text"></p>
-            <button className="btn btn-popup" onClick={props.onClose}>
+            <p className='text'></p>
+            <button className='btn btn-popup' onClick={props.onClose}>
                 Continue Shopping
             </button>
         </div>

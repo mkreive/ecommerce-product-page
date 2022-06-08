@@ -1,5 +1,5 @@
-import CartContext from "../store/cart-context";
-import { useContext } from "react";
+import CartContext from '../store/cart-context';
+import React, { useContext } from 'react';
 
 const CartButton = function (props) {
     const cartCtx = useContext(CartContext);
@@ -8,9 +8,9 @@ const CartButton = function (props) {
     }, 0);
 
     return (
-        <button className="cart__btn" onClick={props.onCartBtnClick}>
-            <div className="cart__btn-icon">
-                <span className="cart__btn-count">{numberOfCartItems}</span>
+        <button className='cart__btn' onClick={props.onCartBtnClick}>
+            <div className='cart__btn-icon'>
+                <span className='cart__btn-count'>{numberOfCartItems}</span>
             </div>
         </button>
     );

@@ -1,15 +1,14 @@
-import ReactDOM from 'react-dom';
 import React, { Fragment } from 'react';
 
 const Gallery = function (props) {
     const product = props.product;
 
-    const prevPhotoHandler = function () {
-        props.onPrev(product);
-    };
-    const nextPhotoHandler = function () {
-        props.onNext(product);
-    };
+    // const prevPhotoHandler = function () {
+    //     props.onPrev(product);
+    // };
+    // const nextPhotoHandler = function () {
+    //     props.onNext(product);
+    // };
     return (
         <Fragment>
             <div className='gallery'>

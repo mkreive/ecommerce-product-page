@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Fragment } from "react";
-import ReactDOM from "react-dom";
+import React, { useContext, Fragment } from 'react';
+import ReactDOM from 'react-dom';
 
-import "../index.scss";
-import CartContext from "../store/cart-context";
-import CartItem from "./CartItem";
-import { removeLocalStorage } from "./helperFunctions";
+import '../index.scss';
+import CartContext from '../store/cart-context';
+import { removeLocalStorage } from './helperFunctions';
 
 const AccountPopUp = function (props) {
     const userName = props.user.name.toUpperCase();
@@ -17,36 +15,28 @@ const AccountPopUp = function (props) {
     }, 0);
 
     const logoutHandler = function () {
-        removeLocalStorage("userId", userId);
+        removeLocalStorage('userId', userId);
     };
     const ordersHandler = function () {};
 
     return (
         <Fragment>
             {ReactDOM.createPortal(
-                <div className="card">
-                    <h3 className="header-small-black">Hello, {userName} </h3>
-                    <hr className="card__line"></hr>
-                    <div className="text">
-                        You have {numberOfCartItems} items in your cart!
-                    </div>
+                <div className='card'>
+                    <h3 className='header-small-black'>Hello, {userName} </h3>
+                    <hr className='card__line'></hr>
+                    <div className='text'>You have {numberOfCartItems} items in your cart!</div>
 
-                    <div className="btn-group">
-                        <button
-                            className="btn btn-popup"
-                            onClick={ordersHandler}
-                        >
+                    <div className='btn-group'>
+                        <button className='btn btn-popup' onClick={ordersHandler}>
                             Orders
                         </button>
-                        <button
-                            className="btn btn-popup"
-                            onClick={logoutHandler}
-                        >
+                        <button className='btn btn-popup' onClick={logoutHandler}>
                             Log Out
                         </button>
                     </div>
                 </div>,
-                document.getElementById("overlay-root")
+                document.getElementById('overlay-root')
             )}
         </Fragment>
     );

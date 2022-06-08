@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { fetchProducts, menFilter } from "./helperFunctions";
-import ProductItem from "./ProductItem";
+import React, { useState, useEffect } from 'react';
+import { fetchProducts, menFilter } from './helperFunctions';
+import ProductItem from './ProductItem';
 
 const Men = function () {
     const [products, setProducts] = useState([]);
@@ -20,16 +20,16 @@ const Men = function () {
 
     if (isLoading) {
         return (
-            <main className="main">
-                <div className="gallery__shop">
-                    <h1 className="header-small">Loading... </h1>
+            <main className='main'>
+                <div className='gallery__shop'>
+                    <h1 className='header-small'>Loading... </h1>
                 </div>
             </main>
         );
     }
     return (
-        <main className="main">
-            <div className="gallery__shop">
+        <main className='main'>
+            <div className='gallery__shop'>
                 {products.map((product) => (
                     <ProductItem key={product.id} product={product} />
                 ))}
