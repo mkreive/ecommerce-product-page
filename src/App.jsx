@@ -52,6 +52,9 @@ const App = function () {
         console.log("placing order");
         cartCtx.order(user);
     };
+    const closeCheckoutHandler = function () {
+        setCheckoutIsShown(false);
+    };
 
     return (
         <CartProvider>
@@ -60,12 +63,15 @@ const App = function () {
                     <Cart
                         onCheckout={showCheckoutHandler}
                         onClose={showCheckoutHandler}
-                        // cart={user.cart}
                     />
                 )}
                 {accountIsShown && <AccountPopUp user={user} />}
                 {checkoutIsShown && (
-                    <Checkout onOrder={placeOrderHandler} user={user} />
+                    <Checkout
+                        onOrder={placeOrderHandler}
+                        user={user}
+                        onClose={closeCheckoutHandler}
+                    />
                 )}
                 <Header
                     onShowCart={showCartHandler}

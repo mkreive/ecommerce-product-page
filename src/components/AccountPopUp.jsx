@@ -11,7 +11,6 @@ const AccountPopUp = function (props) {
     const [prevOrder, setPrevOrder] = useState(null);
     const userName = props.user.name.toUpperCase();
     const userId = props.user.id;
-    const cart = props.user.cart;
 
     const cartCtx = useContext(CartContext);
     const numberOfCartItems = cartCtx.items.reduce((curNumber, item) => {

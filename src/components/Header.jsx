@@ -41,10 +41,7 @@ const Header = (props) => {
                 ></img>
                 <Navigation />
 
-                <CartButton
-                    cart={user.cart}
-                    onCartBtnClick={cardBtnClickHandler}
-                />
+                <CartButton onCartBtnClick={cardBtnClickHandler} />
 
                 {user.photo && (
                     <Account user={user} onAccountClick={accountClickHandler} />
