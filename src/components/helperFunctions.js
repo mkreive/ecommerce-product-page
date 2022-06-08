@@ -33,12 +33,10 @@ export const fetchUserData = async function (userId) {
 };
 export const fetchOrder = async function (userId, cart) {
     fetch(
-        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users/${userId}/cart.json`,
+        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users/${userId}.json`,
         {
             method: "PATCH",
-            body: JSON.stringify({
-                cart: { cart },
-            }),
+            body: JSON.stringify({ cart: cart }),
         }
     );
 };
@@ -60,6 +58,23 @@ export const fetchProductById = async function (id) {
     const responseData = await response.json();
     const [product] = Object.values(responseData);
     return product;
+};
+
+// REDUCE STOCK AFTER ORDER
+export const reduceStock = async function (productId, amount) {
+    const response = await fetch(
+        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products/${productId}/stock.json`
+    );
+    const productStock = await response.json();
+    const newStock = productStock - amount;
+
+    fetch(
+        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/products/${productId}/stock.json`,
+        {
+            method: "PUT",
+            body: JSON.stringify(newStock),
+        }
+    );
 };
 
 // PRODUCTS FILTERS

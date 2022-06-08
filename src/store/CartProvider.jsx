@@ -1,6 +1,6 @@
 import CartContext from "./cart-context";
 import { useReducer } from "react";
-import { fetchOrder } from "../components/helperFunctions";
+import { fetchOrder, reduceStock } from "../components/helperFunctions";
 
 const defaultCartState = { items: [], totalAmount: 0 };
 const cartReducer = function (state, action) {
@@ -48,6 +48,14 @@ const cartReducer = function (state, action) {
     }
 
     if (action.type === "ORDER") {
+        const userId = action.user.id;
+        const orderedProducts = state.items;
+
+        fetchOrder(userId, orderedProducts);
+
+        orderedProducts.forEach((product) => {
+            reduceStock(product.id, product.amount);
+        });
         return defaultCartState;
     }
 

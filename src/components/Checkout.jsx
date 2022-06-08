@@ -1,8 +1,9 @@
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useState } from "react";
 import CartContext from "../store/cart-context";
 import CartItem from "./CartItem";
 
 const Checkout = function (props) {
+    const [orderPlaced, setOrderPlaced] = useState(false);
     const cartCtx = useContext(CartContext);
     const hasItems = cartCtx.items.length > 0;
     const user = props.user;
@@ -12,6 +13,7 @@ const Checkout = function (props) {
     };
 
     const placeOrderHandler = function () {
+        setOrderPlaced(true);
         cartCtx.order(user);
     };
 
@@ -30,7 +32,15 @@ const Checkout = function (props) {
                     ))}
                 </div>
             ) : (
-                <p className="text">No products in cart yet.</p>
+                <p className="text">Cart is empty.</p>
+            )}
+            {orderPlaced && (
+                <Fragment>
+                    <hr className="card__line" />
+                    <p className="text">
+                        THANK YOU! Order placed successfully!
+                    </p>
+                </Fragment>
             )}
             <hr className="card__line" />
             <h3 className="header-small">Total:</h3>

@@ -107,14 +107,20 @@ const Product = function () {
                     <div className="price">
                         <span className="header-medium price-now">
                             €
-                            {product.price -
-                                (product.price * product.discount) / 100}
+                            {product.discount
+                                ? product.price -
+                                  (product.price * product.discount) / 100
+                                : product.price}
                         </span>
-                        <span className="price-discount">
-                            {product.discount}%
-                        </span>
+                        {product.discount && (
+                            <span className="price-discount">
+                                {product.discount}%
+                            </span>
+                        )}
                     </div>
-                    <div className="price-before">€{product.price}</div>
+                    {product.discount && (
+                        <div className="price-before">€{product.price}</div>
+                    )}
                 </div>
                 <div className="addtocart">
                     <div className="addtocart__quantity">
