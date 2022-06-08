@@ -26,20 +26,15 @@ const Product = function () {
 
     const addToCartHandler = function (event) {
         event.preventDefault();
-        const enteredAmount = amountInputRef.current.value;
-        const enteredAmountNum = +enteredAmount;
-        if (
-            enteredAmount.trim().length === 0 ||
-            enteredAmountNum < 1 ||
-            enteredAmountNum > 10
-        ) {
+        const enteredAmount = productCount;
+        if (enteredAmount < 1 || enteredAmount > 10) {
             setAmountIsValid(false);
             return;
         }
         cartCtx.addItem({
             id: productId,
             title: product.title,
-            amount: enteredAmountNum,
+            amount: enteredAmount,
             photo: product.photo,
             price: product.price - (product.price * product.discount) / 100,
         });
@@ -47,15 +42,22 @@ const Product = function () {
 
     const onAddHandler = function () {
         setProductCount(productCount + 1);
-        amountInputRef.current.value = productCount;
+        // amountInputRef.current.value = productCount;
+    };
+    const onProductCountChange = function (e) {
+        const currentValue = amountInputRef.current.value;
+        if (currentValue.trim().length > 0) {
+            setProductCount(parseInt(currentValue));
+        }
+        // amountInputRef.current.value = productCount;
     };
     const onRemoveHandler = function () {
         setProductCount(productCount - 1);
-        amountInputRef.current.value = productCount;
+        // amountInputRef.current.value = productCount;
     };
 
     const showGalleryHandler = function () {
-        props.onShowGallery(product);
+        // props.onShowGallery(product);
         console.log("clicked");
     };
 
@@ -109,10 +111,11 @@ const Product = function () {
                             className="addtocart__quantity-count"
                             ref={amountInputRef}
                             type="number"
+                            onChange={onProductCountChange}
                             min={1}
                             max={10}
                             step={1}
-                            defaultValue={1}
+                            value={productCount}
                         ></input>
                         <span
                             className="addtocart__quantity-add"
