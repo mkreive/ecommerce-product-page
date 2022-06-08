@@ -50,7 +50,6 @@ const App = function () {
     };
     const placeOrderHandler = function () {
         console.log("placing order");
-
         cartCtx.order(user);
     };
 
@@ -61,7 +60,7 @@ const App = function () {
                     <Cart
                         onCheckout={showCheckoutHandler}
                         onClose={showCheckoutHandler}
-                        cart={user.cart}
+                        // cart={user.cart}
                     />
                 )}
                 {accountIsShown && <AccountPopUp user={user} />}

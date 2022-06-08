@@ -48,9 +48,7 @@ const cartReducer = function (state, action) {
     }
 
     if (action.type === "ORDER") {
-        const userId = action.user.id;
-        const cart = state.items;
-        fetchOrder(userId, cart);
+        return defaultCartState;
     }
 
     return defaultCartState;

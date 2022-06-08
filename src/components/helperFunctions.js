@@ -11,7 +11,7 @@ export const removeLocalStorage = function (key, value) {
     const data = getLocalStorage(key);
     if (data === value) window.localStorage.removeItem(key);
 };
-setLocalStorage("userId", "u1");
+setLocalStorage("userId", "-N2RWe0ftPmjZ3YhY1d1");
 
 // FETCHING DATA
 export const fetchUserData = async function (userId) {
@@ -33,10 +33,12 @@ export const fetchUserData = async function (userId) {
 };
 export const fetchOrder = async function (userId, cart) {
     fetch(
-        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users/${userId}/.json`,
+        `https://e-commerce-product-page-999f1-default-rtdb.firebaseio.com/users/${userId}/cart.json`,
         {
             method: "PATCH",
-            body: JSON.stringify({ cart: Object.assign(cart) }),
+            body: JSON.stringify({
+                cart: { cart },
+            }),
         }
     );
 };
