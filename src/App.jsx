@@ -14,12 +14,14 @@ import AccountPopUp from "./components/AccountPopUp";
 import CartProvider from "./store/CartProvider";
 import Checkout from "./components/Checkout";
 import CartContext from "./store/cart-context";
+import Gallery from "./components/Gallery";
 
 const App = function () {
     const [user, setUser] = useState({});
     const [cartIsShown, setCartIsShown] = useState(false);
     const [accountIsShown, setAccountIsShown] = useState(false);
     const [checkoutIsShown, setCheckoutIsShown] = useState(false);
+    const [galleryIsShown, setGalleryIsShown] = useState(false);
     const cartCtx = useContext(CartContext);
 
     const showCartHandler = function (props) {
@@ -56,9 +58,22 @@ const App = function () {
         setCheckoutIsShown(false);
     };
 
+    const showGalleryHandler = function () {
+        console.log("appse clicked");
+    };
+
+    const prevHandler = function () {
+        console.log("prev clicked");
+    };
+    const nextHandler = function () {
+        console.log("next clicked");
+    };
     return (
         <CartProvider>
             <div className="App">
+                {galleryIsShown && (
+                    <Gallery onPrev={prevHandler} onNext={nextHandler} />
+                )}
                 {cartIsShown && (
                     <Cart
                         onCheckout={showCheckoutHandler}
@@ -87,7 +102,10 @@ const App = function () {
                     <Route path="/women/*" element={<Women />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/product/:productId" element={<Product />} />
+                    <Route
+                        path="/product/:productId"
+                        element={<Product onShowGallery={showGalleryHandler} />}
+                    />
                 </Routes>
             </div>
         </CartProvider>

@@ -3,6 +3,7 @@ import { useEffect, useState, useRef, useContext } from "react";
 import "../index.scss";
 import { fetchProductById } from "./helperFunctions";
 import CartContext from "../store/cart-context";
+import Gallery from "./Gallery";
 
 const Product = function () {
     const [product, setProduct] = useState([]);
@@ -53,6 +54,11 @@ const Product = function () {
         amountInputRef.current.value = productCount;
     };
 
+    const galleryClickHandler = function () {
+        props.onShowGallery(product);
+        console.log("clicked");
+    };
+
     if (isLoading) {
         return (
             <main className="main">
@@ -65,15 +71,16 @@ const Product = function () {
 
     return (
         <main className="main">
-            <div className="gallery">
-                <div className="gallery__arrows">
-                    <button className="gallery__arrows-left"></button>
-                    <button className="gallery__arrows-right"></button>
-                </div>
+            <div
+                className="gallery"
+                product={product}
+                onClick={galleryClickHandler}
+            >
                 <img
                     className="gallery__picture-big"
                     src={product.photo}
                     alt="product"
+                    onClick={galleryClickHandler}
                 ></img>
                 <div className="gallery__thumbnails">
                     <img

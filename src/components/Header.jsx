@@ -7,7 +7,6 @@ import Navigation from "./Navigation";
 import CartButton from "./CartButton";
 
 import Account from "./Account";
-import AccountPopUp from "./AccountPopUp";
 
 const Header = (props) => {
     const [user, setUser] = useState({});

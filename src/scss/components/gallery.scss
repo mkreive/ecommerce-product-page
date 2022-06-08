@@ -79,9 +79,6 @@
     }
 
     &__arrows {
-        visibility: hidden;
-        display: none;
-
         @include respond(phone) {
             padding: 5%;
             display: flex;
