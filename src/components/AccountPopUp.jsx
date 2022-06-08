@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Fragment } from "react";
 import ReactDOM from "react-dom";
 
@@ -8,7 +8,6 @@ import CartItem from "./CartItem";
 import { removeLocalStorage } from "./helperFunctions";
 
 const AccountPopUp = function (props) {
-    const [prevOrder, setPrevOrder] = useState(null);
     const userName = props.user.name.toUpperCase();
     const userId = props.user.id;
 
@@ -20,6 +19,7 @@ const AccountPopUp = function (props) {
     const logoutHandler = function () {
         removeLocalStorage("userId", userId);
     };
+    const ordersHandler = function () {};
 
     return (
         <Fragment>
@@ -32,12 +32,12 @@ const AccountPopUp = function (props) {
                     </div>
 
                     <div className="btn-group">
-                        {/* <button
+                        <button
                             className="btn btn-popup"
-                            onClick={prevOrderHandler}
+                            onClick={ordersHandler}
                         >
-                            Previous Order
-                        </button> */}
+                            Orders
+                        </button>
                         <button
                             className="btn btn-popup"
                             onClick={logoutHandler}
