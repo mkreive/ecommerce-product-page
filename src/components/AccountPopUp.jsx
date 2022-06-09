@@ -17,7 +17,6 @@ const AccountPopUp = function (props) {
     const logoutHandler = function () {
         removeLocalStorage('userId', userId);
     };
-    const ordersHandler = function () {};
 
     return (
         <Fragment>
@@ -28,9 +27,6 @@ const AccountPopUp = function (props) {
                     <div className='text'>You have {numberOfCartItems} items in your cart!</div>
 
                     <div className='btn-group'>
-                        <button className='btn btn-popup' onClick={ordersHandler}>
-                            Orders
-                        </button>
                         <button className='btn btn-popup' onClick={logoutHandler}>
                             Log Out
                         </button>
