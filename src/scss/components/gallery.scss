@@ -79,6 +79,37 @@
     }
 
     &__arrows {
+        &-left,
+        &-right {
+            width: 7rem;
+            height: 7rem;
+            border: none;
+            border-radius: 50%;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        &-left {
+            background-image: url('https://res.cloudinary.com/kreiva/image/upload/v1653033616/FrontendMentor/EcommerceProductPage/icon-previous_kp1ceu.svg');
+            background-repeat: no-repeat;
+            background-position: 42% 50%;
+        }
+        &-right {
+            background-image: url('https://res.cloudinary.com/kreiva/image/upload/v1653033614/FrontendMentor/EcommerceProductPage/icon-next_wozwyc.svg');
+            background-repeat: no-repeat;
+            background-position: 52% 50%;
+        }
+
+        &-container {
+            display: flex;
+            justify-content: space-between;
+            width: 110%;
+            position: relative;
+            top: 40rem;
+            left: -3.5rem;
+        }
+
         @include respond(phone) {
             padding: 5%;
             display: flex;
@@ -114,10 +145,25 @@
     }
 
     &__lightbox {
-        background-color: rgba(0, 0, 0, 0.476);
+        display: flex;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.711);
+        z-index: 100;
         position: absolute;
         width: 100vw;
-        height: 100vh;
+        height: auto;
+        padding: 20rem;
+    }
+    &__cancel {
+        position: relative;
+        width: 3rem;
+        height: 3rem;
+        left: 49%;
+        cursor: pointer;
+
+        :hover {
+            color: red;
+        }
     }
 }
 

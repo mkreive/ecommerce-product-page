@@ -64,16 +64,13 @@ const App = function () {
         setMainProduct(props);
     };
 
-    const prevHandler = function () {
-        console.log('prev clicked');
-    };
-    const nextHandler = function () {
-        console.log('next clicked');
+    const cancelGalleryHandler = function () {
+        setGalleryIsShown(false);
     };
     return (
         <CartProvider>
             <div className='App'>
-                {galleryIsShown && <GalleryPortal product={mainProduct} onPrev={prevHandler} onNext={nextHandler} />}
+                {galleryIsShown && <GalleryPortal product={mainProduct} onCancel={cancelGalleryHandler} />}
                 {cartIsShown && <Cart onCheckout={showCheckoutHandler} onClose={showCheckoutHandler} />}
                 {accountIsShown && <AccountPopUp user={user} />}
                 {checkoutIsShown && <Checkout user={user} onOrder={placeOrderHandler} onClose={closeCheckoutHandler} />}
