@@ -55,7 +55,6 @@ const Product = function (props) {
 
     const showGalleryHandler = function () {
         props.onShowGallery(product);
-        console.log('clicked');
     };
 
     if (isLoading) {

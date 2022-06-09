@@ -14,7 +14,7 @@ import AccountPopUp from './components/AccountPopUp';
 import CartProvider from './store/CartProvider';
 import Checkout from './components/Checkout';
 import CartContext from './store/cart-context';
-import Portal from './components/Portal';
+import GalleryPortal from './components/GalleryPortal';
 
 const App = function () {
     const [user, setUser] = useState({});
@@ -23,6 +23,7 @@ const App = function () {
     const [checkoutIsShown, setCheckoutIsShown] = useState(false);
     const [galleryIsShown, setGalleryIsShown] = useState(false);
     const cartCtx = useContext(CartContext);
+    const [mainProduct, setMainProduct] = useState({});
 
     const showCartHandler = function (props) {
         if (!cartIsShown) {
@@ -58,9 +59,9 @@ const App = function () {
         setCheckoutIsShown(false);
     };
 
-    const showGalleryHandler = function () {
+    const showGalleryHandler = function (props) {
         setGalleryIsShown(true);
-        console.log('appse clicked');
+        setMainProduct(props);
     };
 
     const prevHandler = function () {
@@ -72,7 +73,7 @@ const App = function () {
     return (
         <CartProvider>
             <div className='App'>
-                {galleryIsShown && <Portal onPrev={prevHandler} onNext={nextHandler} />}
+                {galleryIsShown && <GalleryPortal product={mainProduct} onPrev={prevHandler} onNext={nextHandler} />}
                 {cartIsShown && <Cart onCheckout={showCheckoutHandler} onClose={showCheckoutHandler} />}
                 {accountIsShown && <AccountPopUp user={user} />}
                 {checkoutIsShown && <Checkout user={user} onOrder={placeOrderHandler} onClose={closeCheckoutHandler} />}

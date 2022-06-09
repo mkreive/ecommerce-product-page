@@ -2,26 +2,9 @@ import React, { Fragment } from 'react';
 
 const Gallery = function (props) {
     const product = props.product;
-
-    // const prevPhotoHandler = function () {
-    //     props.onPrev(product);
-    // };
-    // const nextPhotoHandler = function () {
-    //     props.onNext(product);
-    // };
     return (
         <Fragment>
-            <div className='gallery'>
-                {/* <div className="gallery__arrows">
-                    <button
-                        className="gallery__arrows-left"
-                        onClick={prevPhotoHandler}
-                    ></button>
-                    <button
-                        className="gallery__arrows-right"
-                        onClick={nextPhotoHandler}
-                    ></button>
-                </div> */}
+            <div className='gallery '>
                 <img
                     className='gallery__picture-big'
                     src={product.photo}
